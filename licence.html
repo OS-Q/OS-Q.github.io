@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Popular-Search</title>
+<link rel="shortcut icon" href="images/favicon.ico"/>
+<link rel="bookmark"  	  href="images/favicon.ico"/>
+<link rel="stylesheet" href="css/bootstrap.min.css"><!-- bootstrap-CSS -->
+<link rel="stylesheet" href="css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- style.css -->
+<link rel="stylesheet" href="css/font-awesome.min.css" /><!-- fontawesome-CSS -->
+<link rel="stylesheet" href="css/menu_sideslide.css" type="text/css" media="all"><!-- Navigation-CSS -->
+<!-- meta tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //meta tags -->
+<!--<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>-->
+<!-- js -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- js -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-select.js"></script>
+<script>
+  $(document).ready(function () {
+    var mySelect = $('#first-disabled2');
+
+    $('#special').on('click', function () {
+      mySelect.find('option:selected').prop('disabled', true);
+      mySelect.selectpicker('refresh');
+    });
+
+    $('#special2').on('click', function () {
+      mySelect.find('option:disabled').prop('disabled', false);
+      mySelect.selectpicker('refresh');
+    });
+
+    $('#basic2').selectpicker({
+      liveSearch: true,
+      maxOptions: 1
+    });
+  });
+</script>
+<!-- language-select -->
+<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+<link href="css/jquery.uls.css" rel="stylesheet"/>
+<link href="css/jquery.uls.grid.css" rel="stylesheet"/>
+<link href="css/jquery.uls.lcd.css" rel="stylesheet"/>
+<!-- Source -->
+<script src="js/jquery.uls.data.js"></script>
+<script src="js/jquery.uls.data.utils.js"></script>
+<script src="js/jquery.uls.lcd.js"></script>
+<script src="js/jquery.uls.languagefilter.js"></script>
+<script src="js/jquery.uls.regionfilter.js"></script>
+<script src="js/jquery.uls.core.js"></script>
+<script>
+			$( document ).ready( function() {
+				$( '.uls-trigger' ).uls( {
+					onSelect : function( language ) {
+						var languageName = $.uls.data.getAutonym( language );
+						$( '.uls-trigger' ).text( languageName );
+					},
+					quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
+				} );
+			} );
+		</script>
+<!-- //language-select -->
+</head>
+<body>
+	<!-- Navigation -->
+		<div class="agiletopbar">
+			<div class="wthreenavigation">
+				<div class="menu-wrap">
+				<nav class="menu">
+					<div class="icon-list">
+						<a href="arduino.html"><i class="fa fa-fw fa-mobile"></i><span>Arduino</span></a>
+						<a href="boards.html"><i class="fa fa-fw fa-laptop"></i><span>Pattern</span></a>
+						<a href="compiler.html"><i class="fa fa-fw fa-car"></i><span>Compiler</span></a>
+						<a href="libraries.html"><i class="fa fa-fw fa-motorcycle"></i><span>Library</span></a>
+						<a href="rtos.html"><i class="fa fa-fw fa-wheelchair"></i><span>FreeRTOS</span></a>
+						<a href="template.html"><i class="fa fa-fw fa-th-list"></i><span>Template</span></a>
+						<a href="uploader.html"><i class="fa fa-fw fa-upload"></i><span>Uploader</span></a>
+						<a href="skeleton.html"><i class="fa fa-fw fa-asterisk"></i><span>Skeleton</span></a>
+						<a href="optimize.html"><i class="fa fa-fw fa-asterisk"></i><span>Optimize</span></a>
+						<a href="platform.html"><i class="fa fa-fw fa-shield"></i><span>Platform</span></a>
+						<a href="software.html"><i class="fa fa-fw fa-at"></i><span>Software</span></a>
+						<a href="quality.html"><i class="fa fa-fw fa-thumbs-up"></i><span>Quality</span></a>
+					</div>
+				</nav>
+				<button class="close-button" id="close-button">Close Menu</button>
+			</div>
+			<button class="menu-button" id="open-button"> </button>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<!-- //Navigation -->
+	<!-- header -->
+	<header>
+		<div class="w3ls-header"><!--header-one-->
+			<div class="w3ls-header-left">
+				<p><a href="download.html"><i class="fa fa-download" aria-hidden="true"></i>Download</a></p>
+			</div>
+			<div class="w3ls-header-right">
+				<ul>
+					<li class="dropdown head-dpdn">
+						<a href="https://www.os-q.com/pio" aria-expanded="false"><i class="fa fa-fire" aria-hidden="true"></i>PIO</a>
+					</li>
+					<li class="dropdown head-dpdn">
+						<a href="https://www.os-q.com/qio"><i class="fa fa-cogs" aria-hidden="true"></i>QIO</a>
+					</li>
+					<li class="dropdown head-dpdn">
+						<a href="https://github.com/OS-Q"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>
+					</li>
+
+				</ul>
+			</div>
+
+			<div class="clearfix"> </div>
+		</div>
+		<div class="container">
+			<div class="agile-its-header">
+				<div class="logo">
+					<h1><a href="index.html"><span>OS</span>-Q</a></h1>
+				</div>
+				<div class="agileits_search">
+					<form action="#" method="post">
+						<input name="Search" type="text" placeholder="OpenSource - Quality" required=" ">
+						<select id="agileinfo_search" name="agileinfo_search" required="">
+							<option value="">Components</option>
+							<option value="Arduino">Arduino</option>
+							<option value="Pattern">Pattern</option>
+							<option value="Compiler">Compiler</option>
+							<option value="Library">Library</option>
+							<option value="FreeRTOS">FreeRTOS</option>
+							<option value="Uploader">Uploader</option>
+							<option value="Skeleton">Skeleton</option>
+							<option value="Optimize">Optimize</option>
+							<option value="Platform">Platform</option>
+							<option value="Software">Software</option>
+							<option value="Quality">Quality</option>
+						</select>
+						<button type="submit" class="btn btn-default" aria-label="Left Align">
+							<i class="fa fa-search" aria-hidden="true"> </i>
+						</button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</header>
+	<!-- //header -->
+	<!-- breadcrumbs -->
+	<div class="w3layouts-breadcrumbs text-center">
+		<div class="container">
+			<span class="agile-breadcrumbs"><a href="index.html"><i class="fa fa-thumbs-up home_1"></i></a> / <span>Popular Search</span></span>
+		</div>
+	</div>
+	<!-- //breadcrumbs -->
+	<!-- Popular-search -->
+	<div class="popular-search main-grid-border">
+		<div class="container">
+			<h2 class="w3-head">Most popular search phrases</h2>
+				<div class="tags">
+					<p>
+					<a class="tag1" href="single.html">At vero eos</a>
+					<a class="tag2" href="single.html">doloremque</a>
+					<a class="tag3" href="single.html">On the other</a>
+					<a class="tag4" href="single.html">pain was</a>
+					<a class="tag5" href="single.html">rationally encounter</a>
+					<a class="tag6" href="single.html">praesentium voluptatum</a>
+					<a class="tag7" href="single.html">est, omnis</a>
+					<a class="tag8" href="single.html">who are so beguiled</a>
+					<a class="tag9" href="single.html">when nothing</a>
+					<a class="tag10" href="single.html">owing to the</a>
+					<a class="tag11" href="single.html">pains to avoid</a>
+					<a class="tag12" href="single.html">tempora incidunt</a>
+					<a class="tag13" href="single.html">pursues or desires</a>
+					<a class="tag14" href="single.html">Bonorum et</a>
+					<a class="tag15" href="single.html">written by Cicero</a>
+					<a class="tag16" href="single.html">Ipsum passage</a>
+					<a class="tag17" href="single.html">exercitationem ullam</a>
+					<a class="tag18" href="single.html">mistaken idea</a>
+					<a class="tag19" href="single.html">ducimus qui</a>
+					<a class="tag20" href="single.html">holds in these</a>
+					</p>
+				</div>
+		</div>
+		<div class="popular-regions">
+			<div class="container">
+				<h4>Regions</h4>
+				<ul>
+					<li><a href="regions.html">Alabama</a></li>
+					<li><a href="regions.html">Alaska</a></li>
+					<li><a href="regions.html">Arizona</a></li>
+					<li><a href="regions.html">Arkansas</a></li>
+					<li><a href="regions.html">California</a></li>
+					<li><a href="regions.html">Colorado</a></li>
+					<li><a href="regions.html">Connecticut</a></li>
+					<li><a href="regions.html">Delaware</a></li>
+					<li><a href="regions.html">Florida</a></li>
+					<li><a href="regions.html">Georgia</a></li>
+					<li><a href="regions.html">Hawaii</a></li>
+					<li><a href="regions.html">Idaho</a></li>
+					<li><a href="regions.html">Illinois</a></li>
+					<li><a href="regions.html">Indiana</a></li>
+					<li><a href="regions.html">Iowa</a></li>
+					<li><a href="regions.html">Kansas</a></li>
+					<li><a href="regions.html">Kentucky</a></li>
+					<li><a href="regions.html">Louisiana</a></li>
+					<li><a href="regions.html">Maine</a></li>
+					<li><a href="regions.html">Maryland</a></li>
+					<li><a href="regions.html">Massachusetts</a></li>
+					<li><a href="regions.html">Michigan</a></li>
+					<li><a href="regions.html">Minnesota</a></li>
+					<li><a href="regions.html">Mississippi</a></li>
+					<li><a href="regions.html">Missouri</a></li>
+					<li><a href="regions.html">Montana</a></li>
+					<li><a href="regions.html">Nebraska</a></li>
+					<li><a href="regions.html">Nevada</a></li>
+					<li><a href="regions.html">New Hampshire</a></li>
+					<li><a href="regions.html">New Jersey</a></li>
+					<li><a href="regions.html#">New Mexico</a></li>
+					<li><a href="regions.html">New York</a></li>
+					<li><a href="regions.html">North Carolina</a></li>
+					<li><a href="regions.html">North Dakota</a></li>
+					<li><a href="regions.html">Ohio</a></li>
+					<li><a href="regions.html">Oklahoma</a></li>
+					<li><a href="regions.html">Oregon</a></li>
+					<li><a href="regions.html">Pennsylvania</a></li>
+					<li><a href="regions.html">Rhode Island</a></li>
+					<li><a href="regions.html">South Carolina</a></li>
+					<li><a href="regions.html">South Dakota</a></li>
+					<li><a href="regions.html">Tennessee</a></li>
+					<li><a href="regions.html">Texas</a></li>
+					<li><a href="regions.html">Utah</a></li>
+					<li><a href="regions.html">Vermont</a></li>
+					<li><a href="regions.html">Virginia</a></li>
+					<li><a href="regions.html">Washington</a></li>
+					<li><a href="regions.html">West Virginia</a></li>
+					<li><a href="regions.html">Wisconsin</a></li>
+					<li><a href="regions.html">Wyoming</a></li>
+					<div class="clearfix"></div>
+				</ul>
+				<h4 class="mpcwc">Most popular cities in whole country</h4>
+				<ul>
+					<li><a href="classifieds.html">Birmingham</a></li>
+					<li><a href="classifieds.html">Anchorage</a></li>
+					<li><a href="classifieds.html">Phoenix</a></li>
+					<li><a href="classifieds.html">Little Rock</a></li>
+					<li><a href="classifieds.html">Los Angeles</a></li>
+					<li><a href="classifieds.html">Denver</a></li>
+					<li><a href="classifieds.html">Bridgeport</a></li>
+					<li><a href="classifieds.html">Wilmington</a></li>
+					<li><a href="classifieds.html">Jacksonville</a></li>
+					<li><a href="classifieds.html">Atlanta</a></li>
+					<li><a href="classifieds.html">Honolulu</a></li>
+					<li><a href="classifieds.html">Boise</a></li>
+					<li><a href="classifieds.html">Chicago</a></li>
+					<li><a href="classifieds.html">Indianapolis</a></li>
+					<div class="clearfix"></div>
+				</ul>
+			</div>
+		</div>
+		<div class="popular-categories">
+			<div class="container">
+				<div class="popular-category">
+					<h4>Arduino</h4>
+					<ul>
+						<li><a href="arduino.html">Iphone</a></li>
+						<li><a href="arduino.html">Samsung</a></li>
+						<li><a href="arduino.html">Iphone 6</a></li>
+						<li><a href="arduino.html">Iphone 5s</a></li>
+						<li><a href="arduino.html">Exchange</a></li>
+						<li><a href="arduino.html">Nokia</a></li>
+						<li><a href="arduino.html">Sony</a></li>
+						<li><a href="arduino.html">Htc</a></li>
+						<li><a href="arduino.html">I phone</a></li>
+						<li><a href="arduino.html">Iphone 5</a></li>
+						<li><a href="arduino.html">Blackberry</a></li>
+						<li><a href="arduino.html">Cdma</a></li>
+						<li><a href="arduino.html">Micromax</a></li>
+						<li><a href="arduino.html">Iphone 4s</a></li>
+						<li><a href="arduino.html">Lenovo</a></li>
+						<li><a href="arduino.html">Apple</a></li>
+						<li><a href="arduino.html">Mi</a></li>
+						<li><a href="arduino.html">I phone 6</a></li>
+						<li><a href="arduino.html">I phone 5s</a></li>
+						<li><a href="arduino.html">Moto</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>Pattern</h4>
+					<ul>
+						<li><a href="boards.html">Laptop</a></li>
+						<li><a href="boards.html">Dj</a></li>
+						<li><a href="boards.html">Tv</a></li>
+						<li><a href="boards.html">Projector</a></li>
+						<li><a href="boards.html">Led tv</a></li>
+						<li><a href="boards.html">Speakers</a></li>
+						<li><a href="boards.html">Home theater</a></li>
+						<li><a href="boards.html">Laptops</a></li>
+						<li><a href="boards.html">Printer</a></li>
+						<li><a href="boards.html">Speaker</a></li>
+						<li><a href="boards.html">Led</a></li>
+						<li><a href="boards.html">Amplifier</a></li>
+						<li><a href="boards.html">Generator</a></li>
+						<li><a href="boards.html">Music system</a></li>
+						<li><a href="boards.html">Washing machine</a></li>
+						<li><a href="boards.html">Camera</a></li>
+						<li><a href="boards.html">Sony</a></li>
+						<li><a href="boards.html">Fridge</a></li>
+						<li><a href="boards.html">Cpu</a></li>
+						<li><a href="boards.html">Ac</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>Compiler</h4>
+					<ul>
+						<li><a href="compiler.html">Innova</a></li>
+						<li><a href="compiler.html">Scorpio</a></li>
+						<li><a href="compiler.html">Jeep</a></li>
+						<li><a href="compiler.html">Alto</a></li>
+						<li><a href="compiler.html">Maruti 800</a></li>
+						<li><a href="compiler.html">Bolero</a></li>
+						<li><a href="compiler.html">Zen</a></li>
+						<li><a href="compiler.html">Honda city</a></li>
+						<li><a href="compiler.html">Delhi</a></li>
+						<li><a href="compiler.html">Omni</a></li>
+						<li><a href="compiler.html">Tavera</a></li>
+						<li><a href="compiler.html">Indica</a></li>
+						<li><a href="compiler.html">Santro</a></li>
+						<li><a href="compiler.html">Bmw</a></li>
+						<li><a href="compiler.html">Mumbai</a></li>
+						<li><a href="compiler.html">Tata sumo</a></li>
+						<li><a href="compiler.html">Kerala</a></li>
+						<li><a href="compiler.html">Swift vdi</a></li>
+						<li><a href="compiler.html">Fortuner</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>Library</h4>
+					<ul>
+						<li><a href="libraries.html">Bullet</a></li>
+						<li><a href="libraries.html">Royal enfield</a></li>
+						<li><a href="libraries.html">R15</a></li>
+						<li><a href="libraries.html">Fz</a></li>
+						<li><a href="libraries.html">Activa</a></li>
+						<li><a href="libraries.html">Pulsar</a></li>
+						<li><a href="libraries.html">Yamaha</a></li>
+						<li><a href="libraries.html">Mumbai</a></li>
+						<li><a href="libraries.html">Ktm</a></li>
+						<li><a href="libraries.html">Pulsar 220</a></li>
+						<li><a href="libraries.html">Bangalore</a></li>
+						<li><a href="libraries.html">Rx</a></li>
+						<li><a href="libraries.html">Pune</a></li>
+						<li><a href="libraries.html">Apache</a></li>
+						<li><a href="libraries.html">Harley davidson</a></li>
+						<li><a href="libraries.html">Delhi</a></li>
+						<li><a href="libraries.html">Kolkata</a></li>
+						<li><a href="libraries.html">Hyderabad</a></li>
+						<li><a href="libraries.html">Karizma</a></li>
+						<li><a href="libraries.html">Unicorn</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>FreeRTOS</h4>
+					<ul>
+						<li><a href="rtos.html">Sofa</a></li>
+						<li><a href="rtos.html">Bed</a></li>
+						<li><a href="rtos.html">Dining table</a></li>
+						<li><a href="rtos.html">Sofa set</a></li>
+						<li><a href="rtos.html">Almirah</a></li>
+						<li><a href="rtos.html">Table</a></li>
+						<li><a href="rtos.html">Sofa cum bed</a></li>
+						<li><a href="rtos.html">Chair</a></li>
+						<li><a href="rtos.html">Double bed</a></li>
+						<li><a href="rtos.html">Computer table</a></li>
+						<li><a href="rtos.html">Antique</a></li>
+						<li><a href="rtos.html">Chairs</a></li>
+						<li><a href="rtos.html">Study table</a></li>
+						<li><a href="rtos.html">Office table</a></li>
+						<li><a href="rtos.html">Dressing table</a></li>
+						<li><a href="rtos.html">Tv stand</a></li>
+						<li><a href="rtos.html">Mumbai</a></li>
+						<li><a href="rtos.html">Wardrobe</a></li>
+						<li><a href="rtos.html">Cupboard</a></li>
+						<li><a href="rtos.html">Pune</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>Template</h4>
+					<ul>
+						<li><a href="template.html">Cow</a></li>
+						<li><a href="template.html">Cows</a></li>
+						<li><a href="template.html">Goat</a></li>
+						<li><a href="template.html">Cat</a></li>
+						<li><a href="template.html">Aseel</a></li>
+						<li><a href="template.html">Horse</a></li>
+						<li><a href="template.html">Pigeons</a></li>
+						<li><a href="template.html">Pigeon</a></li>
+						<li><a href="template.html">Goats</a></li>
+						<li><a href="template.html">Cats</a></li>
+						<li><a href="template.html">Birds</a></li>
+						<li><a href="template.html">Rottweiler</a></li>
+						<li><a href="template.html">Rabbit</a></li>
+						<li><a href="template.html">Pug</a></li>
+						<li><a href="template.html">Pitbull</a></li>
+						<li><a href="template.html">German shepherd</a></li>
+						<li><a href="template.html">Buffalo</a></li>
+						<li><a href="template.html">Labrador</a></li>
+						<li><a href="template.html">Dog</a></li>
+						<li><a href="template.html">Hens</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>Uploader</h4>
+					<ul>
+						<li><a href="uploader.html">Coin</a></li>
+						<li><a href="uploader.html">Books</a></li>
+						<li><a href="uploader.html">Bat</a></li>
+						<li><a href="uploader.html">Football</a></li>
+						<li><a href="uploader.html">Treadmill</a></li>
+						<li><a href="uploader.html">Guitar</a></li>
+						<li><a href="uploader.html">Coins</a></li>
+						<li><a href="uploader.html">Moradabad</a></li>
+						<li><a href="uploader.html">Cycle</a></li>
+						<li><a href="uploader.html">Antique</a></li>
+						<li><a href="uploader.html">Gym</a></li>
+						<li><a href="uploader.html">Carrom board</a></li>
+						<li><a href="uploader.html">Book</a></li>
+						<li><a href="uploader.html">Shoes</a></li>
+						<li><a href="uploader.html">Cricket bat</a></li>
+						<li><a href="uploader.html">Sport</a></li>
+						<li><a href="uploader.html">East india</a></li>
+						<li><a href="uploader.html">Skates</a></li>
+						<li><a href="uploader.html">Cricket bats</a></li>
+						<li><a href="uploader.html">Sports</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>Skeleton</h4>
+					<ul>
+						<li><a href="skeleton.html">Watch</a></li>
+						<li><a href="skeleton.html">Watches</a></li>
+						<li><a href="skeleton.html">Mumbai</a></li>
+						<li><a href="skeleton.html">Shoes</a></li>
+						<li><a href="skeleton.html">Jewellery</a></li>
+						<li><a href="skeleton.html">Bag</a></li>
+						<li><a href="skeleton.html">Saree</a></li>
+						<li><a href="skeleton.html">Jacket</a></li>
+						<li><a href="skeleton.html">Hyderabad</a></li>
+						<li><a href="skeleton.html">Kolkata</a></li>
+						<li><a href="skeleton.html">Kerala</a></li>
+						<li><a href="skeleton.html">Delhi</a></li>
+						<li><a href="skeleton.html">Bra</a></li>
+						<li><a href="skeleton.html">Bags</a></li>
+						<li><a href="skeleton.html">Ahmedabad</a></li>
+						<li><a href="skeleton.html">Bangalore</a></li>
+						<li><a href="skeleton.html">Sarees</a></li>
+						<li><a href="skeleton.html">Sunglasses</a></li>
+						<li><a href="skeleton.html">Gold</a></li>
+						<li><a href="skeleton.html">Nike</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>Optimize</h4>
+					<ul>
+						<li><a href="optimize.html">Car</a></li>
+						<li><a href="optimize.html">Cycle</a></li>
+						<li><a href="optimize.html">Mumbai</a></li>
+						<li><a href="optimize.html">Toys</a></li>
+						<li><a href="optimize.html">Bike</a></li>
+						<li><a href="optimize.html">High chair</a></li>
+						<li><a href="optimize.html">Delhi</a></li>
+						<li><a href="optimize.html">Cycles</a></li>
+						<li><a href="optimize.html">Pune</a></li>
+						<li><a href="optimize.html">Stroller</a></li>
+						<li><a href="optimize.html">Hyderabad</a></li>
+						<li><a href="optimize.html">Compiler</a></li>
+						<li><a href="optimize.html">Walker</a></li>
+						<li><a href="optimize.html">Tricycle</a></li>
+						<li><a href="optimize.html">Baby walker</a></li>
+						<li><a href="optimize.html">Car seat</a></li>
+						<li><a href="optimize.html">Cradle</a></li>
+						<li><a href="optimize.html">Optimize cycle</a></li>
+						<li><a href="optimize.html">Kolkata baby</a></li>
+						<li><a href="optimize.html">Battery car</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>Platform</h4>
+					<ul>
+						<li><a href="platform.html">Vip numbers</a></li>
+						<li><a href="platform.html">Fancy number</a></li>
+						<li><a href="platform.html">Insurance</a></li>
+						<li><a href="platform.html">Rent a car</a></li>
+						<li><a href="platform.html">Massage</a></li>
+						<li><a href="platform.html">Driver</a></li>
+						<li><a href="platform.html">Fancy numbers</a></li>
+						<li><a href="platform.html">Service</a></li>
+						<li><a href="platform.html">Vip number</a></li>
+						<li><a href="platform.html">Business</a></li>
+						<li><a href="platform.html">Loans</a></li>
+						<li><a href="platform.html">Cook</a></li>
+						<li><a href="platform.html">Distributors</a></li>
+						<li><a href="platform.html">Travel</a></li>
+						<li><a href="platform.html">Platform</a></li>
+						<li><a href="platform.html">Pop up calls</a></li>
+						<li><a href="platform.html">Icloud</a></li>
+						<li><a href="platform.html">Visa</a></li>
+						<li><a href="platform.html">Kerala rent car</a></li>
+						<li><a href="platform.html">Partners</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>Software</h4>
+					<ul>
+						<li><a href="software.html">Driver</a></li>
+						<li><a href="software.html">Fresher</a></li>
+						<li><a href="software.html">Driver job</a></li>
+						<li><a href="software.html">Delivery boy</a></li>
+						<li><a href="software.html">Kolkata</a></li>
+						<li><a href="software.html">Part time</a></li>
+						<li><a href="software.html">Teacher</a></li>
+						<li><a href="software.html">Driver jobs</a></li>
+						<li><a href="software.html">Office boy</a></li>
+						<li><a href="software.html">Data entry</a></li>
+						<li><a href="software.html">Delhi</a></li>
+						<li><a href="software.html">Computer operator</a></li>
+						<li><a href="software.html">Data entry</a></li>
+						<li><a href="software.html">Graphic designer</a></li>
+						<li><a href="software.html">Receptionist</a></li>
+						<li><a href="software.html">Mumbai</a></li>
+						<li><a href="software.html">Part time job</a></li>
+						<li><a href="software.html">Work from home</a></li>
+						<li><a href="software.html">Accounting finance</a></li>
+						<li><a href="software.html">Cook</a></li>
+						<li><a href="software.html">Airport	</a></li>
+					</ul>
+				</div>
+				<div class="popular-category">
+					<h4>Quality</h4>
+					<ul>
+						<li><a href="quality.html">House for sale</a></li>
+						<li><a href="quality.html">Rent</a></li>
+						<li><a href="quality.html">Wayanad</a></li>
+						<li><a href="quality.html">Thodupuzha</a></li>
+						<li><a href="quality.html">Kothamangalam</a></li>
+						<li><a href="quality.html">Muvattupuzha</a></li>
+						<li><a href="quality.html">Pala</a></li>
+						<li><a href="quality.html">Sale</a></li>
+						<li><a href="quality.html">Agriculture land</a></li>
+						<li><a href="quality.html">House for rent</a></li>
+						<li><a href="quality.html">Irinjalakuda</a></li>
+						<li><a href="quality.html">Kottayam</a></li>
+						<li><a href="quality.html">Powai</a></li>
+						<li><a href="quality.html">Changanacherry</a></li>
+						<li><a href="quality.html">Aluva</a></li>
+						<li><a href="quality.html">Shop</a></li>
+						<li><a href="quality.html">Land</a></li>
+						<li><a href="quality.html">House</a></li>
+						<li><a href="quality.html">Hyderabad</a></li>
+						<li><a href="quality.html">Pathanamthitta</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- //Popular-search -->
+	<!--footer section start-->
+		<footer>
+			<div class="w3-agileits-footer-top">
+				<div class="container">
+					<div class="wthree-foo-grids">
+						<div class="col-md-3 wthree-footer-grid">
+							<h4 class="footer-head">Mission & Vision</h4>
+							<p>In the open source world, there are countless treasures waiting for us to discover, OS-Q aims to integrate resources and benefit more people.</p>
+						</div>
+						<div class="col-md-3 wthree-footer-grid">
+							<h4 class="footer-head">Associated</h4>
+							<ul>
+								<li><a href="http://www.soc.xin"><i class="fa fa-external-link" aria-hidden="true"></i>www.SoC.Xin</a></li>
+								<li><a href="http://stop.stops.top"><i class="fa fa-external-link" aria-hidden="true"></i>stop.stops.top</a></li>
+								<li><a href="http://www.tfzoo.com"><i class="fa fa-external-link" aria-hidden="true"></i>www.tfzoo.com</a></li>
+								<li><a href="http://www.zeergen.com"><i class="fa fa-external-link" aria-hidden="true"></i>www.zeergen.com</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3 wthree-footer-grid">
+							<h4 class="footer-head">Information</h4>
+							<ul>
+								<li><a href="regions.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Locations Map</a></li>
+								<li><a href="terms.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Terms of Use</a></li>
+								<li><a href="licence.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>licence search</a></li>
+								<li><a href="privacy.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Privacy Policy</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3 wthree-footer-grid">
+							<h4 class="footer-head">Contact Us</h4>
+							<address>
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-map-marker"></span></li>
+									<li>690 BiBo Street,PuDong,ShangHai</li>
+								</ul>
+								<div class="clearfix"> </div>
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-earphone"></span></li>
+									<li>+086 130-2011-2031</li>
+								</ul>
+								<div class="clearfix"> </div>
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-envelope"></span></li>
+									<li><a href="mailto:qitas@qitas.cn">qitas@qitas.cn</a></li>
+								</ul>
+							</address>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="agileits-footer-bottom text-center">
+			<div class="container">
+				<div class="w3-footer-logo">
+					<h1><a href="index.html"><span>OS</span>-Q</a></h1>
+				</div>
+				<div class="w3-footer-social-icons">
+					<ul>
+						<li><a class="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+						<li><a class="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
+						<li><a class="flickr" href="#"><i class="fa fa-flickr" aria-hidden="true"></i><span>Flickr</span></a></li>
+						<li><a class="googleplus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><span>Google+</span></a></li>
+						<li><a class="dribbble" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a></li>
+					</ul>
+				</div>
+				<div class="copyrights">
+					<p>Copyright &copy; 2021-2023.OS-Q All rights reserved.</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		</footer>
+        <!--footer section end-->
+</body>
+		<!-- Navigation-JavaScript -->
+			<script src="js/classie.js"></script>
+			<script src="js/main.js"></script>
+		<!-- //Navigation-JavaScript -->
+		<!-- here stars scrolling icon -->
+			<script type="text/javascript">
+				$(document).ready(function() {
+					/*
+						var defaults = {
+						containerID: 'toTop', // fading element id
+						containerHoverID: 'toTopHover', // fading element hover id
+						scrollSpeed: 1200,
+						easingType: 'linear'
+						};
+					*/
+
+					$().UItoTop({ easingType: 'easeOutQuart' });
+
+					});
+			</script>
+			<!-- start-smoth-scrolling -->
+			<script type="text/javascript" src="js/move-top.js"></script>
+			<script type="text/javascript" src="js/easing.js"></script>
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$(".scroll").click(function(event){
+						event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+					});
+				});
+			</script>
+			<!-- start-smoth-scrolling -->
+		<!-- //here ends scrolling icon -->
+</html>

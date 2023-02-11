@@ -1,0 +1,31 @@
+.. _framework_zephyr:
+
+Zephyr
+===========
+``RTOS`` ``Apache 2.0`` ``2016``
+
+`Zephyr <https://www.zephyrproject.org/>`_ 项目是Linux基金会托管的开源项目。为所有资源受限设备，构建了针对低功耗、小型内存微处理器设备而进行优化的物联网嵌入式小型、可扩展的实时操作系统（RTOS），支持多种硬件架构及多种开发板，可以在小至8 kB内存的系统上运行。
+采用深入的安全开发生命周期：安全验证，模糊和渗透测试，频繁的代码审查，静态代码分析，威胁建模和审查，以防止代码中的后门 。
+
+.. contents:: Contents
+    :local:
+    :depth: 1
+.. include:: zephyr_extra.rst
+
+
+开发示例
+-----------
+
+* `Zephyr RTOS for Atmel SAM <https://github.com/platformio/platform-atmelsam/tree/master/examples?utm_source=platformio.org&utm_medium=docs>`_
+* `Zephyr RTOS for Freescale Kinetis <https://github.com/platformio/platform-freescalekinetis/tree/master/examples?utm_source=platformio.org&utm_medium=docs>`_
+* `Zephyr RTOS for Nordic nRF51 <https://github.com/platformio/platform-nordicnrf51/tree/master/examples?utm_source=platformio.org&utm_medium=docs>`_
+* `Zephyr RTOS for Nordic nRF52 <https://github.com/platformio/platform-nordicnrf52/tree/master/examples?utm_source=platformio.org&utm_medium=docs>`_
+* `Zephyr RTOS for NXP i.MX RT <https://github.com/platformio/platform-nxpimxrt/tree/master/examples?utm_source=platformio.org&utm_medium=docs>`_
+* `Zephyr RTOS for NXP LPC <https://github.com/platformio/platform-nxplpc/tree/master/examples?utm_source=platformio.org&utm_medium=docs>`_
+* `Zephyr RTOS for SiFive <https://github.com/platformio/platform-sifive/tree/master/examples?utm_source=platformio.org&utm_medium=docs>`_
+* `Zephyr RTOS for Silicon Labs EFM32 <https://github.com/platformio/platform-siliconlabsefm32/tree/master/examples?utm_source=platformio.org&utm_medium=docs>`_
+* `Zephyr RTOS for ST STM32 <https://github.com/platformio/platform-ststm32/tree/master/examples?utm_source=platformio.org&utm_medium=docs>`_
+* `Zephyr RTOS for Teensy <https://github.com/platformio/platform-teensy/tree/master/examples?utm_source=platformio.org&utm_medium=docs>`_
+
+
+.. include:: zephyr_chips.rst

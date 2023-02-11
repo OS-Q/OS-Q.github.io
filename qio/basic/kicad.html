@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KiCad &mdash; OS-Q</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://www.os-q.com/qio/basic/kicad.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Coder" href="coder.html" />
+ 
+<link rel="stylesheet" href="../_static/css/extra.css" type="text/css" />
+<script src="../_static/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> QIO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">开源协议</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../version.html">版本迭代</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">核心资源</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../template/index.html">工程模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/index.html">辅助设施</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">关联组件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../framework/index.html">流行框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standard/index.html">行业标准</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">生态接入</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="coder.html">代码编辑</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">硬件设计</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#eeschema">eeschema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cvpcb">cvpcb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pcbnew">pcbnew</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">层描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#gerbview">gerbview</a></li>
+</ul>
+</li>
+</ul>
+
+<ins data-rvad-zoneid="7" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QIO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+<ins data-rvad-zoneid="1" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">KiCad</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/OS-Q/docs/blob/qio/source/basic/kicad.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="kicad">
+<span id="id1"></span><h1>KiCad<a class="headerlink" href="#kicad" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>开源协议 : <a class="reference internal" href="../license.html#license-gpl"><span class="std std-ref">GPL</span></a></p></li>
+<li><p>资源链接 : <a class="reference external" href="https://www.kicad.org/">官网</a></p></li>
+</ul>
+<p>KiCad于1992年由Jean-Pierre Charras在IUT de Grenoble工作时创建。2013年，CERN BE-CO-HT部门开始为KiCad提供资源，帮助促进KiCad与商用EDA工具相媲美。</p>
+<ul class="simple">
+<li><p>GPL开源软件，同时维护有大量开源资源</p></li>
+<li><p>图形操作界面，鼠标和键盘操作很方便，支持脚本</p></li>
+<li><p>相应功能全面，完全能够满足常规PCB的设计需求</p></li>
+<li><p>跨平台的工具，linux、mac、windows都可以使用</p></li>
+<li><p>可以直接生成gerber文件输出，不用担心文件格式</p></li>
+<li><p>软件不大，对电脑的配置要求不高</p></li>
+<li><p>学习入门的门槛低，相关资料丰富</p></li>
+<li><p>快捷键和热键强大，操作很人性化</p></li>
+</ul>
+<p>主要包括一个工程管理器和四个主要程序:</p>
+<ul class="simple">
+<li><p>kicad - 工程管理器</p></li>
+<li><p><a class="reference internal" href="#eeschema"><span class="std std-ref">eeschema</span></a> - 原理图编辑器</p></li>
+<li><p><a class="reference internal" href="#cvpcb"><span class="std std-ref">cvpcb</span></a> - 元件封装关联选择器</p></li>
+<li><p><a class="reference internal" href="#pcbnew"><span class="std std-ref">pcbnew</span></a> - PCB布线程序</p></li>
+<li><p><a class="reference internal" href="#gerbview"><span class="std std-ref">gerbview</span></a> - Gerber(光绘文件)查看器</p></li>
+</ul>
+<section id="eeschema">
+<span id="id3"></span><h2>eeschema<a class="headerlink" href="#eeschema" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="cvpcb">
+<span id="id4"></span><h2>cvpcb<a class="headerlink" href="#cvpcb" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="pcbnew">
+<span id="id5"></span><h2>pcbnew<a class="headerlink" href="#pcbnew" title="Permalink to this heading">¶</a></h2>
+<section id="id6">
+<h3>层描述<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
+<p>Pcbnew的层描述中F.代表电路板上层（Front），B.代表电路板的下层（Back）</p>
+<p>铜层是用于放置和重新布置导线的工作层。 层号从0开始（第一个铜层，在上层，即F.Cu），并以31（最后一个铜层，在下层，即B.Cu）结束。 由于元件不能放置在内层（层1到层30）中，所以只有层0（F.Cu）和层31（B.Cu）是元件层。</p>
+<p>任何铜层的名字都是可以编辑的。层0的默认名称为F.Cu，层31的默认名称为B.Cu。当电路板是2层板时，层0和层31之间没有其他的铜层。当电路板是4层板时，层0和层31中间多了两个铜层，名称按从上层到下层的顺序依次为 In1.Cu 和 In2.Cu。当电路板是6层板时，层0和层31中间多了四个铜层，名称按从上层到下层的顺序依次为 In1.Cu，In2.Cu，In3.Cu 和 In4.Cu。</p>
+<p>Adhesive (F.Adhes and B.Adhes)粘合层：用于在波峰焊前将SMD元件的粘合剂粘贴到电路板上的粘合层。</p>
+<p>Solder Paste (F.Paste and B.Paste)焊膏层：在回流焊接之前生产掩模以允许焊膏放置在SMD元件的焊盘上。</p>
+<p>Silk Screen (F.SilkS and B.SilkS)丝印层：元件图样标识的层，用于辅助元件的安装。</p>
+<p>Solder Mask (F.Mask and B.Mask)阻焊层：定义了焊接的掩模，也就是不过绿油的区域。</p>
+<p>Courtyard (F.CrtYd and B.CrtYd)空间层：用于显示元件在PCB上实际占用的空间大小。</p>
+<p>Fabrication (F.Fab and B.Fab)生产层：用于辅助元件贴装。</p>
+<p>Edge.Cuts边界层：用于绘制电路板轮廓（在此层上的任何元素（图形、文本…）都显示在所有其他图层上）。</p>
+<p>pcbnew提供了至多50个层供电路板设计师使用：</p>
+<ul class="simple">
+<li><p>32个铜层供导线走线（可覆铜）</p></li>
+<li><p>14个固定用途技术层</p></li>
+<li><p>12个技术层对（上技术层和下技术层对称）: Adhesive, Solder Paste, Silk Screen, Solder Mask, Courtyard, Fabrication共计6对。</p></li>
+<li><p>2个独立技术层：Edge Cuts, Margin</p></li>
+<li><p>4个辅助层可以任意使用：Comments, E.C.O. 1, E.C.O. 2, Drawings</p></li>
+</ul>
+</section>
+</section>
+<section id="gerbview">
+<span id="id7"></span><h2>gerbview<a class="headerlink" href="#gerbview" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="coder.html" class="btn btn-neutral float-left" title="Coder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+
+    <p>&#169; Copyright 2021 - 2023 www.OS-Q.com.</p>
+<ins data-rvad-zoneid="8" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+  </div>
+
+  
+ 
+<script>
+  var navBarHTML = '\
+<div>\
+  <div class="container container-fluid">\
+    <div class="navbar-header">\
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBarCollapse" aria-expanded="false">\
+        <span class="sr-only">Toggle navigation</span>\
+        <span class="icon-bar"></span>\
+        <span class="icon-bar"></span>\
+        <span class="icon-bar"></span>\
+      </button>\
+      <a class="navbar-brand" href="https://www.OS-Q.com" title="OS-Q"></a>\
+    </div>\
+    <nav role="navigation" class="collapse navbar-collapse" id="navBarCollapse">\
+      <div>\
+        <ul class="nav navbar-nav">\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://stops.top" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs fa-lg"></i>STOPs<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://stops.top"><i class="fa fa-cogs"></i>官网主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/stops-top"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.stops.top"><i class="fa fa-book"></i>产品文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.SoC.xin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-microchip fa-lg"></i>Xindex<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.SoC.xin/"><i class="fa fa-microchip"></i>芯片选型</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/socxin"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.SoC.xin"><i class="fa fa-book"></i>芯闻文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.zeergen.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cube fa-lg"></i>ZeerGen<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.zeergen.com"><i class="fa fa-home"></i>官网主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/zeergen"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.zeergen.com"><i class="fa fa-book"></i>说明文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.qitas.cn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i>Qitas<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.qitas.cn"><i class="fa fa-mars"></i>个人主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/qitas"><i class="fa fa-github"></i>开源主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://docs.qitas.cn"><i class="fa fa-file"></i>知识分享</a></li>\
+            </ul>\
+          </li>\
+        </ul>\
+        <ul class="nav navbar-nav navbar-right">\
+          <li class="active"><a href="https://doc.OS-Q.com/qio"><i class="fa fa-book fa-lg"></i>QIO</a></li>\
+          <li class="nav-soc-r"><a href="https://doc.OS-Q.com/pio"><i class="fa fa-book fa-lg"></i>PIO</a></li>\
+          <li class="nav-soc-g"><a href="https://www.OS-Q.com"><i class="fa fa-quora fa-lg"></i>主页</a></li>\
+          <li class="nav-soc-b"><a href="https://www.github.com/OS-Q"><i class="fa fa-github fa-lg"></i>开源</a></li>\
+        </ul>\
+      </div>\
+    </nav>\
+  </div>\
+</div>';
+
+  (function() {
+    if (window.location.href.indexOf('http://') === 0) {
+      location.href = 'https:' + window.location.href.substring(5);
+    }
+
+    var topBanner = $('.top-banner');
+    var navBar = document.createElement('header');
+    navBar.className = 'navbar navbar-inverse';
+    navBar.innerHTML = navBarHTML;
+    if (topBanner.length) {
+      $(navBar).insertAfter(topBanner)
+    } else {
+      document.body.insertBefore(navBar, document.body.firstChild);
+    }
+
+    if ($(window).width() <= 768) {
+      return;
+    }
+
+    var topOffset = 50;
+    if (topBanner.length) {
+      topOffset += $('.navbar').offset().top;
+    }
+    $('.wy-nav-side').css('top', topOffset + 'px');
+    $(window).scroll(function() {
+      $('.wy-nav-side').css('top', $(window).scrollTop() > topOffset ? 0 : topOffset + 'px');
+    });
+  })();
+</script>
+<!-- <ins data-rvad-zoneid="11" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+<script async src="https://ad.platformio.org/delivery/revasyncjs.dll"></script> -->
+
+
+</footer>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book">QIO Documentation</span>
+    v0.1.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dd>QIO项目致力于提供标准化的应用开发方案，能够以最解决产品的形态提供统一功能和接口，同时也为硬件驱动适配和工具软件适配提供了清晰的目标机标准</dd>
+      <dt>   Created By Qtias</dt>
+      <img src="./_static/images/weixin.jpg">
+        <!-- <dd><a href="https://github.com/OS-Q/docs/blob/qio/source/basic/kicad.rst"> View</a></dd>
+        <dd><a href="https://github.com/OS-Q/docs/edit/qio/source/basic/kicad.rst"> Edit</a></dd> -->
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1768265-7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-1768265-7', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

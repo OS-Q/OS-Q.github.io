@@ -1,0 +1,18 @@
+.. _rtthread:
+
+RT-Thread
+============
+
+* 开源协议 : :ref:`license_apache`
+* 资源链接 : `官网 <https://www.rt-thread.org/>`_
+
+.. contents::
+    :local:
+    :depth: 1
+
+简介
+-------------
+
+与其他RTOS不同，:ref:`rtthread` 不仅仅是一个实时内核，它在努力构造一套开发生态。
+
+

@@ -1,0 +1,21 @@
+.. _coder:
+
+Coder
+===========
+
+.. contents::
+    :local:
+    :depth: 1
+
+VSCode
+-----------
+
+`VS Code <https://code.visualstudio.com/>`_ 是Microsoft在2015年4月30日正式发布，基于 :ref:`license_mit` 协议开源，可运行在Windows，macOS和Linux之上的跨平台源代码编辑器， 并具有丰富的其他语言（例如C++，C＃，Java，Python，PHP，Go）和运行时（例如.NET和Unity）扩展的生态系统。
+
+
+Jupyter
+-----------
+
+Jupyter Notebook（此前被称为 IPython notebook）是一个交互式笔记本，支持运行多种编程语言。
+
+的本质是一个 Web 应用程序，便于创建和共享程序文档，支持实时代码，数学方程，可视化和 markdown。

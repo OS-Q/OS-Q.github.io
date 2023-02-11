@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Regions</title>
+<link rel="stylesheet" href="css/bootstrap.min.css"><!-- bootstrap-CSS -->
+<link rel="stylesheet" href="css/bootstrap-select.css"><!-- bootstrap-select-CSS -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- style.css -->
+<link rel="stylesheet" href="css/font-awesome.min.css" /><!-- fontawesome-CSS -->
+<link rel="stylesheet" href="css/menu_sideslide.css" type="text/css" media="all"><!-- Navigation-CSS -->
+<!-- meta tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //meta tags -->
+<!--<link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>-->
+<!-- js -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- js -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-select.js"></script>
+<script>
+  $(document).ready(function () {
+    var mySelect = $('#first-disabled2');
+
+    $('#special').on('click', function () {
+      mySelect.find('option:selected').prop('disabled', true);
+      mySelect.selectpicker('refresh');
+    });
+
+    $('#special2').on('click', function () {
+      mySelect.find('option:disabled').prop('disabled', false);
+      mySelect.selectpicker('refresh');
+    });
+
+    $('#basic2').selectpicker({
+      liveSearch: true,
+      maxOptions: 1
+    });
+  });
+</script>
+<!-- language-select -->
+<script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+<link href="css/jquery.uls.css" rel="stylesheet"/>
+<link href="css/jquery.uls.grid.css" rel="stylesheet"/>
+<link href="css/jquery.uls.lcd.css" rel="stylesheet"/>
+<!-- Source -->
+<script src="js/jquery.uls.data.js"></script>
+<script src="js/jquery.uls.data.utils.js"></script>
+<script src="js/jquery.uls.lcd.js"></script>
+<script src="js/jquery.uls.languagefilter.js"></script>
+<script src="js/jquery.uls.regionfilter.js"></script>
+<script src="js/jquery.uls.core.js"></script>
+<script>
+			$( document ).ready( function() {
+				$( '.uls-trigger' ).uls( {
+					onSelect : function( language ) {
+						var languageName = $.uls.data.getAutonym( language );
+						$( '.uls-trigger' ).text( languageName );
+					},
+					quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
+				} );
+			} );
+		</script>
+<!-- //language-select -->
+</head>
+<body>
+	<!-- Navigation -->
+		<div class="agiletopbar">
+			<div class="wthreenavigation">
+				<div class="menu-wrap">
+				<nav class="menu">
+					<div class="icon-list">
+						<a href="arduino.html"><i class="fa fa-fw fa-mobile"></i><span>Arduino</span></a>
+						<a href="boards.html"><i class="fa fa-fw fa-laptop"></i><span>Pattern</span></a>
+						<a href="compiler.html"><i class="fa fa-fw fa-car"></i><span>Compiler</span></a>
+						<a href="libraries.html"><i class="fa fa-fw fa-motorcycle"></i><span>Library</span></a>
+						<a href="rtos.html"><i class="fa fa-fw fa-wheelchair"></i><span>FreeRTOS</span></a>
+						<a href="template.html"><i class="fa fa-fw fa-th-list"></i><span>Template</span></a>
+						<a href="uploader.html"><i class="fa fa-fw fa-upload"></i><span>Uploader</span></a>
+						<a href="skeleton.html"><i class="fa fa-fw fa-asterisk"></i><span>Skeleton</span></a>
+						<a href="optimize.html"><i class="fa fa-fw fa-asterisk"></i><span>Optimize</span></a>
+						<a href="platform.html"><i class="fa fa-fw fa-shield"></i><span>Platform</span></a>
+						<a href="software.html"><i class="fa fa-fw fa-at"></i><span>Software</span></a>
+						<a href="quality.html"><i class="fa fa-fw fa-thumbs-up"></i><span>Quality</span></a>
+					</div>
+				</nav>
+				<button class="close-button" id="close-button">Close Menu</button>
+			</div>
+			<button class="menu-button" id="open-button"> </button>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<!-- //Navigation -->
+	<!-- header -->
+	<header>
+		<div class="w3ls-header"><!--header-one-->
+			<div class="w3ls-header-left">
+				<p><a href="download.html"><i class="fa fa-download" aria-hidden="true"></i>Download</a></p>
+			</div>
+			<div class="w3ls-header-right">
+				<ul>
+					<li class="dropdown head-dpdn">
+						<a href="signin.html" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>User</a>
+					</li>
+					<li class="dropdown head-dpdn">
+						<a href="http://docs.OS-Q.com"><i class="fa fa-book" aria-hidden="true"></i>Docs</a>
+					</li>
+					<li class="dropdown head-dpdn">
+						<a href="https://github.com/OS-Q"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>
+					</li>
+
+				</ul>
+			</div>
+
+			<div class="clearfix"> </div>
+		</div>
+		<div class="container">
+			<div class="agile-its-header">
+				<div class="logo">
+					<h1><a href="index.html"><span>OS</span>-Q</a></h1>
+				</div>
+				<div class="agileits_search">
+					<form action="#" method="post">
+						<input name="Search" type="text" placeholder="OpenSource & OperatingSystem" required=" ">
+						<select id="agileinfo_search" name="agileinfo_search" required="">
+							<option value="">Components</option>
+							<option value="Arduino">Arduino</option>
+							<option value="Pattern">Pattern</option>
+							<option value="Compiler">Compiler</option>
+							<option value="Library">Library</option>
+							<option value="FreeRTOS">FreeRTOS</option>
+							<option value="Uploader">Uploader</option>
+							<option value="Skeleton">Skeleton</option>
+							<option value="Optimize">Optimize</option>
+							<option value="Platform">Platform</option>
+							<option value="Software">Software</option>
+							<option value="Quality">Quality</option>
+						</select>
+						<button type="submit" class="btn btn-default" aria-label="Left Align">
+							<i class="fa fa-search" aria-hidden="true"> </i>
+						</button>
+					</form>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</header>
+	<!-- //header -->
+	<!-- breadcrumbs -->
+	<div class="w3layouts-breadcrumbs text-center">
+		<div class="container">
+			<span class="agile-breadcrumbs"><a href="index.html"><i class="fa fa-thumbs-up home_1"></i></a> / <span>Regions</span></span>
+		</div>
+	</div>
+	<!-- //breadcrumbs -->
+	<!-- Regions -->
+	<div class="regions main-grid-border">
+		<div class="container">
+			<h2 class="w3-head">Location List</h2>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Alabama </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html"> Birmingham </a></li>
+						<li><a href="classifieds.html"> Montgomery </a></li>
+						<li><a href="classifieds.html"> Mobile </a></li>
+						<li><a href="classifieds.html"> Huntsville </a></li>
+						<li><a href="classifieds.html"> Tuscaloosa </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Alaska </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Anchorage</a></li>
+						<li><a href="classifieds.html">Fairbanks</a></li>
+						<li><a href="classifieds.html">Juneau</a></li>
+						<li><a href="classifieds.html">Sitka</a></li>
+						<li><a href="classifieds.html">Ketchikan</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Arizona </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Phoenix </a></li>
+						<li><a href="classifieds.html">Tucson   </a></li>
+						<li><a href="classifieds.html">Mesa   </a></li>
+						<li><a href="classifieds.html">Chandler  </a></li>
+						<li><a href="classifieds.html">Glendale </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Arkansas </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Little Rock  </a></li>
+						<li><a href="classifieds.html">Fort Smith    </a></li>
+						<li><a href="classifieds.html">Fayetteville   </a></li>
+						<li><a href="classifieds.html">Springdale    </a></li>
+						<li><a href="classifieds.html">Jonesboro   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>California </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Los Angeles  </a></li>
+						<li><a href="classifieds.html">San Diego    </a></li>
+						<li><a href="classifieds.html">San Jose</a></li>
+						<li><a href="classifieds.html">San Francisco</a></li>
+						<li><a href="classifieds.html">Fresno</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Colorado </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Denver   </a></li>
+						<li><a href="classifieds.html">Colorado   </a></li>
+						<li><a href="classifieds.html">Aurora   </a></li>
+						<li><a href="classifieds.html">Fort Collins  </a></li>
+						<li><a href="classifieds.html">Lakewood  </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Connecticut </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Bridgeport </a></li>
+						<li><a href="classifieds.html">New Haven  </a></li>
+						<li><a href="classifieds.html">Hartford  </a></li>
+						<li><a href="classifieds.html">Stamford </a></li>
+						<li><a href="classifieds.html">Waterbury   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Delaware </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Wilmington</a></li>
+						<li><a href="classifieds.html">Dover</a></li>
+						<li><a href="classifieds.html">Newark </a></li>
+						<li><a href="classifieds.html">Bear</a></li>
+						<li><a href="classifieds.html">Middletown</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Florida </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Jacksonville  </a></li>
+						<li><a href="classifieds.html">Miami  </a></li>
+						<li><a href="classifieds.html">Tampa  </a></li>
+						<li><a href="classifieds.html">St. Petersburg   </a></li>
+						<li><a href="classifieds.html">Orlando  </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Georgia </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Atlanta </a></li>
+						<li><a href="classifieds.html">Augusta </a></li>
+						<li><a href="classifieds.html">Columbus</a></li>
+						<li><a href="classifieds.html">Savannah  </a></li>
+						<li><a href="classifieds.html">Athens   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Hawaii </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Honolulu  </a></li>
+						<li><a href="classifieds.html">Pearl City </a></li>
+						<li><a href="classifieds.html">Hilo </a></li>
+						<li><a href="classifieds.html">Kailua   </a></li>
+						<li><a href="classifieds.html">Waipahu </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Idaho  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Boise</a></li>
+						<li><a href="classifieds.html">Nampa  </a></li>
+						<li><a href="classifieds.html">Meridian </a></li>
+						<li><a href="classifieds.html">Idaho Falls </a></li>
+						<li><a href="classifieds.html">Pocatello  </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Illinois </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Chicago  </a></li>
+						<li><a href="classifieds.html">Aurora  </a></li>
+						<li><a href="classifieds.html">Rockford  </a></li>
+						<li><a href="classifieds.html">Joliet </a></li>
+						<li><a href="classifieds.html">Naperville   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Indiana  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html"> Indianapolis </a></li>
+						<li><a href="classifieds.html"> Fort Wayne </a></li>
+						<li><a href="classifieds.html"> Evansville  </a></li>
+						<li><a href="classifieds.html"> South Bend </a></li>
+						<li><a href="classifieds.html"> Hammond </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Iowa  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Des Moines </a></li>
+						<li><a href="classifieds.html">Cedar Rapids </a></li>
+						<li><a href="classifieds.html">Davenport </a></li>
+						<li><a href="classifieds.html">Sioux City  </a></li>
+						<li><a href="classifieds.html">Waterloo </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Kansas </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Wichita   </a></li>
+						<li><a href="classifieds.html">Overland Park  </a></li>
+						<li><a href="classifieds.html">Kansas City  </a></li>
+						<li><a href="classifieds.html">Topeka  </a></li>
+						<li><a href="classifieds.html">Olathe  </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Kentucky </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Louisville  </a></li>
+						<li><a href="classifieds.html">Lexington  </a></li>
+						<li><a href="classifieds.html">Bowling Green </a></li>
+						<li><a href="classifieds.html">Owensboro </a></li>
+						<li><a href="classifieds.html">Covington   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Louisiana </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">New Orleans </a></li>
+						<li><a href="classifieds.html">Baton Rouge    </a></li>
+						<li><a href="classifieds.html">Shreveport    </a></li>
+						<li><a href="classifieds.html">Metairie   </a></li>
+						<li><a href="classifieds.html">Lafayette   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Maine </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Portland</a></li>
+						<li><a href="classifieds.html">Lewiston </a></li>
+						<li><a href="classifieds.html">Bangor </a></li>
+						<li><a href="classifieds.html">South Portland</a></li>
+						<li><a href="classifieds.html">Auburn </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Maryland </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Baltimore </a></li>
+						<li><a href="classifieds.html">Frederick    </a></li>
+						<li><a href="classifieds.html">Rockville    </a></li>
+						<li><a href="classifieds.html">Gaithersburg    </a></li>
+						<li><a href="classifieds.html">Bowie     </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Massachusetts </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Boston   </a></li>
+						<li><a href="classifieds.html">Worcester    </a></li>
+						<li><a href="classifieds.html">Springfield   </a></li>
+						<li><a href="classifieds.html">Lowell    </a></li>
+						<li><a href="classifieds.html">Cambridge    </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Michigan </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Detroit </a></li>
+						<li><a href="classifieds.html">Grand Rapids </a></li>
+						<li><a href="classifieds.html">Warren  </a></li>
+						<li><a href="classifieds.html">Sterling Heights </a></li>
+						<li><a href="classifieds.html">Lansing  </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Minnesota  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Minneapolis  </a></li>
+						<li><a href="classifieds.html">St. Paul   </a></li>
+						<li><a href="classifieds.html">Rochester   </a></li>
+						<li><a href="classifieds.html">Duluth   </a></li>
+						<li><a href="classifieds.html">Bloomington   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Mississippi </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Jackson </a></li>
+						<li><a href="classifieds.html">Gulfport </a></li>
+						<li><a href="classifieds.html">Southaven </a></li>
+						<li><a href="classifieds.html">Hattiesburg  </a></li>
+						<li><a href="classifieds.html">Biloxi  </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Missouri </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Kansas City</a></li>
+						<li><a href="classifieds.html">St. Louis</a></li>
+						<li><a href="classifieds.html">Springfield </a></li>
+						<li><a href="classifieds.html">Independence </a></li>
+						<li><a href="classifieds.html">Columbia </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Montana </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Billings </a></li>
+						<li><a href="classifieds.html">Missoula  </a></li>
+						<li><a href="classifieds.html">Great Falls </a></li>
+						<li><a href="classifieds.html">Bozeman  </a></li>
+						<li><a href="classifieds.html">Butte-Silver Bow</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Nebraska </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Omaha  </a></li>
+						<li><a href="classifieds.html">Lincoln   </a></li>
+						<li><a href="classifieds.html">Bellevue   </a></li>
+						<li><a href="classifieds.html">Grand Island   </a></li>
+						<li><a href="classifieds.html">Kearney   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Nevada </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Las Vegas  </a></li>
+						<li><a href="classifieds.html">Henderson </a></li>
+						<li><a href="classifieds.html">North Las Vegas  </a></li>
+						<li><a href="classifieds.html">Reno   </a></li>
+						<li><a href="classifieds.html">Sunrise Manor </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>New Hampshire </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Manchester   </a></li>
+						<li><a href="classifieds.html">Nashua    </a></li>
+						<li><a href="classifieds.html">Concord    </a></li>
+						<li><a href="classifieds.html">Dover    </a></li>
+						<li><a href="classifieds.html">Rochester    </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>New Jersey </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Newark  </a></li>
+						<li><a href="classifieds.html">Jersey City      </a></li>
+						<li><a href="classifieds.html">Paterson      </a></li>
+						<li><a href="classifieds.html">Elizabeth   </a></li>
+						<li><a href="classifieds.html">Edison      </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>New Mexico </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Albuquerque  </a></li>
+						<li><a href="classifieds.html">Las Cruces  </a></li>
+						<li><a href="classifieds.html">Rio Rancho </a></li>
+						<li><a href="classifieds.html">Santa Fe  </a></li>
+						<li><a href="classifieds.html">Roswell </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>New York </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">New York </a></li>
+						<li><a href="classifieds.html">Buffalo      </a></li>
+						<li><a href="classifieds.html">Rochester      </a></li>
+						<li><a href="classifieds.html">Yonkers      </a></li>
+						<li><a href="classifieds.html">Syracuse       </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>North Carolina  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Charlotte  </a></li>
+						<li><a href="classifieds.html">Raleigh   </a></li>
+						<li><a href="classifieds.html">Greensboro   </a></li>
+						<li><a href="classifieds.html">Winston-Salem  </a></li>
+						<li><a href="classifieds.html">Durham   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>North Dakota  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Fargo  </a></li>
+						<li><a href="classifieds.html">Bismarck   </a></li>
+						<li><a href="classifieds.html">Grand Forks   </a></li>
+						<li><a href="classifieds.html">Minot   </a></li>
+						<li><a href="classifieds.html">West Fargo  </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Ohio  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Columbus  </a></li>
+						<li><a href="classifieds.html">Cleveland  </a></li>
+						<li><a href="classifieds.html">Cincinnati  </a></li>
+						<li><a href="classifieds.html">Toledo   </a></li>
+						<li><a href="classifieds.html">Akron   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Oklahoma  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Oklahoma City </a></li>
+						<li><a href="classifieds.html">Tulsa </a></li>
+						<li><a href="classifieds.html">Norman  </a></li>
+						<li><a href="classifieds.html">Broken Arrow </a></li>
+						<li><a href="classifieds.html">Lawton </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Oregon  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html"> Portland </a></li>
+						<li><a href="classifieds.html"> Eugene  </a></li>
+						<li><a href="classifieds.html"> Salem  </a></li>
+						<li><a href="classifieds.html"> Gresham  </a></li>
+						<li><a href="classifieds.html"> Hillsboro  </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Pennsylvania  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Philadelphia  </a></li>
+						<li><a href="classifieds.html">Pittsburgh   </a></li>
+						<li><a href="classifieds.html">Allentown   </a></li>
+						<li><a href="classifieds.html">Erie   </a></li>
+						<li><a href="classifieds.html">Reading   </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Rhode Island  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Providence  </a></li>
+						<li><a href="classifieds.html">Warwick   </a></li>
+						<li><a href="classifieds.html">Cranston   </a></li>
+						<li><a href="classifieds.html">Pawtucket   </a></li>
+						<li><a href="classifieds.html">East Providence  </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>South Carolina </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Columbia </a></li>
+						<li><a href="classifieds.html">Charleston </a></li>
+						<li><a href="classifieds.html">North Charleston </a></li>
+						<li><a href="classifieds.html">Mount Pleasant</a></li>
+						<li><a href="classifieds.html">Rock Hill </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>South Dakota </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Sioux Falls </a></li>
+						<li><a href="classifieds.html">Rapid City </a></li>
+						<li><a href="classifieds.html">Aberdeen </a></li>
+						<li><a href="classifieds.html">Brookings</a></li>
+						<li><a href="classifieds.html">Watertown</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Tennessee  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Memphis </a></li>
+						<li><a href="classifieds.html">Nashville </a></li>
+						<li><a href="classifieds.html">Knoxville </a></li>
+						<li><a href="classifieds.html">Chattanooga </a></li>
+						<li><a href="classifieds.html">Clarksville </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Texas   </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Houston </a></li>
+						<li><a href="classifieds.html">San Antonio </a></li>
+						<li><a href="classifieds.html">Dallas </a></li>
+						<li><a href="classifieds.html">Austin </a></li>
+						<li><a href="classifieds.html">Fort Worth </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Utah  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html"> Salt Lake City</a></li>
+						<li><a href="classifieds.html"> West Valley City</a></li>
+						<li><a href="classifieds.html"> Provo</a></li>
+						<li><a href="classifieds.html"> West Jordan</a></li>
+						<li><a href="classifieds.html"> Orem</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Vermont </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html"> Burlington</a></li>
+						<li><a href="classifieds.html"> Essex</a></li>
+						<li><a href="classifieds.html"> South Burlington</a></li>
+						<li><a href="classifieds.html"> Colchester</a></li>
+						<li><a href="classifieds.html"> Rutland</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Virginia  </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html"> Virginia Beach</a></li>
+						<li><a href="classifieds.html"> Norfolk</a></li>
+						<li><a href="classifieds.html"> Chesapeake</a></li>
+						<li><a href="classifieds.html"> Arlington</a></li>
+						<li><a href="classifieds.html"> Richmond</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Washington </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html"> Seattle</a></li>
+						<li><a href="classifieds.html"> Spokane</a></li>
+						<li><a href="classifieds.html"> Tacoma</a></li>
+						<li><a href="classifieds.html"> Vancouver</a></li>
+						<li><a href="classifieds.html"> Bellevue</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>West Virginia </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Charleston </a></li>
+						<li><a href="classifieds.html">Huntington </a></li>
+						<li><a href="classifieds.html">Parkersburg </a></li>
+						<li><a href="classifieds.html">Morgantown </a></li>
+						<li><a href="classifieds.html">Wheeling </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Wisconsin </h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html">Milwaukee </a></li>
+						<li><a href="classifieds.html">Madison </a></li>
+						<li><a href="classifieds.html">Green Bay </a></li>
+						<li><a href="classifieds.html">Kenosha </a></li>
+						<li><a href="classifieds.html">Racine </a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="region-block">
+			<div class="container">
+				<div class="state col-md-3">
+					<h3>Wyoming</h3>
+				</div>
+				<div class="sun-regions col-md-9">
+					<ul>
+						<li><a href="classifieds.html"> Cheyenne</a></li>
+						<li><a href="classifieds.html"> Casper</a></li>
+						<li><a href="classifieds.html"> Laramie</a></li>
+						<li><a href="classifieds.html"> Gillette</a></li>
+						<li><a href="classifieds.html"> Rock Springs</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!-- //Regions -->
+	<!--footer section start-->
+		<footer>
+			<div class="w3-agileits-footer-top">
+				<div class="container">
+					<div class="wthree-foo-grids">
+						<div class="col-md-3 wthree-footer-grid">
+							<h4 class="footer-head">Mission & Vision</h4>
+							<p>In the open source world, there are countless treasures waiting for us to discover, OS-Q aims to integrate resources and benefit more people.</p>
+						</div>
+						<div class="col-md-3 wthree-footer-grid">
+							<h4 class="footer-head">Associated</h4>
+							<ul>
+								<li><a href="http://www.soc.xin"><i class="fa fa-external-link" aria-hidden="true"></i>www.SoC.Xin</a></li>
+								<li><a href="http://stop.stops.top"><i class="fa fa-external-link" aria-hidden="true"></i>stop.stops.top</a></li>
+								<li><a href="http://www.tfzoo.com"><i class="fa fa-external-link" aria-hidden="true"></i>www.tfzoo.com</a></li>
+								<li><a href="http://www.zeergen.com"><i class="fa fa-external-link" aria-hidden="true"></i>www.zeergen.com</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3 wthree-footer-grid">
+							<h4 class="footer-head">Information</h4>
+							<ul>
+								<li><a href="regions.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Locations Map</a></li>
+								<li><a href="terms.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Terms of Use</a></li>
+								<li><a href="licence.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>licence search</a></li>
+								<li><a href="privacy.html"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>Privacy Policy</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3 wthree-footer-grid">
+							<h4 class="footer-head">Contact Us</h4>
+							<address>
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-map-marker"></span></li>
+									<li>690 BiBo Street,PuDong,ShangHai</li>
+								</ul>
+								<div class="clearfix"> </div>
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-earphone"></span></li>
+									<li>+086 130-2011-2031</li>
+								</ul>
+								<div class="clearfix"> </div>
+								<ul class="location">
+									<li><span class="glyphicon glyphicon-envelope"></span></li>
+									<li><a href="mailto:qitas@qitas.cn">qitas@qitas.cn</a></li>
+								</ul>
+							</address>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<div class="agileits-footer-bottom text-center">
+			<div class="container">
+				<div class="w3-footer-logo">
+					<h1><a href="index.html"><span>OS</span>-Q</a></h1>
+				</div>
+				<div class="w3-footer-social-icons">
+					<ul>
+						<li><a class="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+						<li><a class="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
+						<li><a class="flickr" href="#"><i class="fa fa-flickr" aria-hidden="true"></i><span>Flickr</span></a></li>
+						<li><a class="googleplus" href="#"><i class="fa fa-google-plus" aria-hidden="true"></i><span>Google+</span></a></li>
+						<li><a class="dribbble" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a></li>
+					</ul>
+				</div>
+				<div class="copyrights">
+					<p>Copyright &copy; 2021.OS-Q All rights reserved.</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		</footer>
+        <!--footer section end-->
+</body>
+		<!-- Navigation-JavaScript -->
+			<script src="js/classie.js"></script>
+			<script src="js/main.js"></script>
+		<!-- //Navigation-JavaScript -->
+		<!-- here stars scrolling icon -->
+			<script type="text/javascript">
+				$(document).ready(function() {
+					/*
+						var defaults = {
+						containerID: 'toTop', // fading element id
+						containerHoverID: 'toTopHover', // fading element hover id
+						scrollSpeed: 1200,
+						easingType: 'linear'
+						};
+					*/
+
+					$().UItoTop({ easingType: 'easeOutQuart' });
+
+					});
+			</script>
+			<!-- start-smoth-scrolling -->
+			<script type="text/javascript" src="js/move-top.js"></script>
+			<script type="text/javascript" src="js/easing.js"></script>
+			<script type="text/javascript">
+				jQuery(document).ready(function($) {
+					$(".scroll").click(function(event){
+						event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+					});
+				});
+			</script>
+			<!-- start-smoth-scrolling -->
+		<!-- //here ends scrolling icon -->
+</html>

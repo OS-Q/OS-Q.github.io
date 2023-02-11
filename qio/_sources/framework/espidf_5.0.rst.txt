@@ -1,0 +1,7 @@
+
+ESP-IDF v5.0
+-------------
+
+``ESP32-C2`` ``ESP32-H2``
+
+* MicroPython 开始支持使用最新的 IDF v5 构建 ESP32

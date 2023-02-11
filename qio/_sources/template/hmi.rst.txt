@@ -1,7 +1,0 @@
-.. _hmi:
-
-HMI
-==============
-
-
-.. include:: ../../../templates/hmi/readme.rst

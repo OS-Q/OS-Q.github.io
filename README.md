@@ -1,2 +1,2 @@
-# [www.OS-Q.com](https://github.com/Qitas/OSQ)
+# [www.OS-Q.com](https://www.OS-Q.com)
 

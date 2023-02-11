@@ -1,0 +1,56 @@
+..  整理芯片分级和国内常用的平台，进行定制化裁剪接入
+
+
+.. _platforms:
+
+Platforms
+===============
+
+
+Embedded
+----------------
+
+.. toctree::
+    :maxdepth: 1
+
+    rp2040
+    ststm8
+    ststm32
+    espressif32
+    espressif8266
+    freescalekinetis
+    intel_mcs51
+    lattice_ice40
+    maxim32
+    microchippic32
+    nordicnrf51
+    nordicnrf52
+    nxpimxrt
+    nxplpc
+    openhw
+    riscv_gap
+    shakti
+    sifive
+    siliconlabsefm32
+    teensy
+    timsp430
+    titiva
+    wiznet7500
+    aceinna_imu
+    atmelavr
+    atmelmegaavr
+    atmelsam
+    intel_arc32
+    chipsalliance
+
+Desktop
+-------
+
+.. toctree::
+    :maxdepth: 1
+
+    native
+    linux_arm
+    linux_i686
+    linux_x86_64
+    windows_x86

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Platforms &mdash; PIO</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://www.os-q.com/pio/platforms/creating_platform.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Custom Boards" href="creating_board.html" />
+    <link rel="prev" title="Custom Hardware" href="custom_platform_and_board.html" />
+ 
+<link rel="stylesheet" href="../_static/css/extra.css" type="text/css" />
+<script src="../_static/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PIO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ide/pioide.html">PIO IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">PIO Core (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../home/index.html">PIO Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plus/pio-account.html">PIO Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials and Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../projectconf/index.html">platformio.ini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projectconf/build_configurations.html">Build Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment variables</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Instruments</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../librarymanager/index.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frameworks/index.html">Frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boards/index.html">Boards</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="custom_platform_and_board.html">Custom Hardware</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Custom Platforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#packages">Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manifest-file-platform-json">Manifest File <code class="docutils literal notranslate"><span class="pre">platform.json</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-script-main-py">Build Script <code class="docutils literal notranslate"><span class="pre">main.py</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#publishing">Publishing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="creating_board.html">Custom Boards</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/index.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plus/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/unit-testing/index.html">Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/static-code-analysis/index.html">Static Code Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plus/pio-remote.html">Remote Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ide/index.html">Cloud &amp; Desktop IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ci/index.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/compile_commands.html">Compilation database</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/history.html">Release Notes</a></li>
+</ul>
+
+<ins data-rvad-zoneid="7" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PIO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+<ins data-rvad-zoneid="1" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="custom_platform_and_board.html">Custom Hardware</a></li>
+      <li class="breadcrumb-item active">Custom Platforms</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/OS-Q/docs/blob/pio/source/platforms/creating_platform.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="custom-platforms">
+<span id="platform-creating"></span><h1><a class="toc-backref" href="#id1">Custom Platforms</a><a class="headerlink" href="#custom-platforms" title="Permalink to this heading">¶</a></h1>
+<p><em>PIO</em> can build the same binary code under
+different host systems via the single command <a class="reference internal" href="../core/userguide/cmd_run.html#cmd-run"><span class="std std-ref">pio run</span></a>
+without any dependent software or requirements.</p>
+<p>A <em>manifest</em> describes how to produce binaries for a particular
+platform under one or multiple host systems by a set of build scripts,
+toolchains, the settings for the most popular embedded boards, etc.</p>
+<p>This guide explains how to write manifests, to support building for
+new development platforms.</p>
+<p><strong>Step-by-Step Manual</strong></p>
+<ol class="arabic simple">
+<li><p>Choose <a class="reference internal" href="#platform-creating-packages"><span class="std std-ref">Packages</span></a> for platform</p></li>
+<li><p>Create <a class="reference internal" href="#platform-creating-manifest-file"><span class="std std-ref">Manifest File platform.json</span></a></p></li>
+<li><p>Create <a class="reference internal" href="#platform-creating-build-script"><span class="std std-ref">Build Script main.py</span></a></p></li>
+<li><p>Finish with the <a class="reference internal" href="#platform-creating-installation"><span class="std std-ref">Installation</span></a>.</p></li>
+</ol>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#custom-platforms" id="id1">Custom Platforms</a></p>
+<ul>
+<li><p><a class="reference internal" href="#examples" id="id2">Examples</a></p></li>
+<li><p><a class="reference internal" href="#packages" id="id3">Packages</a></p></li>
+<li><p><a class="reference internal" href="#manifest-file-platform-json" id="id4">Manifest File <code class="docutils literal notranslate"><span class="pre">platform.json</span></code></a></p></li>
+<li><p><a class="reference internal" href="#build-script-main-py" id="id5">Build Script <code class="docutils literal notranslate"><span class="pre">main.py</span></code></a></p></li>
+<li><p><a class="reference internal" href="#installation" id="id6">Installation</a></p></li>
+<li><p><a class="reference internal" href="#publishing" id="id7">Publishing</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="examples">
+<h2><a class="toc-backref" href="#id2">Examples</a><a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<p>Please take a look at the source code of existing
+<a class="reference external" href="https://github.com/topics/platformio-platform">PIO Development Platforms</a>.</p>
+</section>
+<section id="packages">
+<span id="platform-creating-packages"></span><h2><a class="toc-backref" href="#id3">Packages</a><a class="headerlink" href="#packages" title="Permalink to this heading">¶</a></h2>
+<p>Some tools are the same when compiling for several platforms, for
+example a common compiler. A <em>package</em> is some tool or framework that
+can be used when compiling for one or multiple platforms. Even if
+multiple platforms use the same package, the package only needs to be
+downloaded once. Since each package is pre-built for the different
+host systems (Windows, Mac, Linux), developers can get started without
+first compiling the tools.</p>
+<p>PIO has a registry with pre-built packages for the most popular
+operating systems and you can use them in your platform
+manifest. Custom packages can be uploaded to the PIO Registry using <a class="reference internal" href="../core/userguide/pkg/cmd_publish.html#cmd-pkg-publish"><span class="std std-ref">pio pkg publish</span></a> command.</p>
+</section>
+<section id="manifest-file-platform-json">
+<span id="platform-creating-manifest-file"></span><h2><a class="toc-backref" href="#id4">Manifest File <code class="docutils literal notranslate"><span class="pre">platform.json</span></code></a><a class="headerlink" href="#manifest-file-platform-json" title="Permalink to this heading">¶</a></h2>
+<p>Each platform definition includes a <em>manifest file</em> with a particular
+format that is parsed by PIO when handling projects using that
+platform.</p>
+<p>Here is an example <code class="docutils literal notranslate"><span class="pre">platform.json</span></code> for the fictitious platform “myplatform”:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;myplatform&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Platform&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My custom development platform&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;homepage&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://mycompany.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Apache-2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;keyword_1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;keyword_N&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;repository&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;git&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/platformio/platform-myplatform.git&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;frameworks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;%FRAMEWORK_NAME_1%&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;framework-%FRAMEWORK_NAME_1%&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;builder/frameworks/%FRAMEWORK_NAME_1%.py&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;%FRAMEWORK_NAME_N%&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;framework-%FRAMEWORK_NAME_N%&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;script&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;builder/frameworks/%FRAMEWORK_NAME_N%.py&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;packages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;toolchain-gccarmnoneeabi&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;toolchain&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;owner&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;platformio&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;=1.40803.0,&lt;1.40805.0&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;framework-%FRAMEWORK_NAME_1%&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;framework&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;optional&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~1.10607.0&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;framework-%FRAMEWORK_NAME_N%&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;framework&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;optional&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~1.117.0&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;tool-direct-vcs-url&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uploader&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;optional&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/user/repo.git&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="build-script-main-py">
+<span id="platform-creating-build-script"></span><h2><a class="toc-backref" href="#id5">Build Script <code class="docutils literal notranslate"><span class="pre">main.py</span></code></a><a class="headerlink" href="#build-script-main-py" title="Permalink to this heading">¶</a></h2>
+<p>Each platform definition must include a <code class="docutils literal notranslate"><span class="pre">main.py</span></code>.</p>
+<p>PIO’s build script is based on a next-generation build tool
+named <a class="reference external" href="http://www.scons.org">SCons</a>. PIO has its own built-in
+firmware builder <code class="docutils literal notranslate"><span class="pre">env.BuildProgram</span></code> with deep library search. Please
+see the following template as start for developing your own <code class="docutils literal notranslate"><span class="pre">main.py</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build script for test.py</span>
+<span class="sd">    test-builder.py</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="kn">from</span> <span class="nn">SCons.Script</span> <span class="kn">import</span> <span class="n">AlwaysBuild</span><span class="p">,</span> <span class="n">Builder</span><span class="p">,</span> <span class="n">Default</span><span class="p">,</span> <span class="n">DefaultEnvironment</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">DefaultEnvironment</span><span class="p">()</span>
+
+<span class="c1"># A full list with the available variables</span>
+<span class="c1"># http://www.scons.org/doc/production/HTML/scons-user.html#app-variables</span>
+<span class="n">env</span><span class="o">.</span><span class="n">Replace</span><span class="p">(</span>
+    <span class="n">AR</span><span class="o">=</span><span class="s2">&quot;ar&quot;</span><span class="p">,</span>
+    <span class="n">AS</span><span class="o">=</span><span class="s2">&quot;gcc&quot;</span><span class="p">,</span>
+    <span class="n">CC</span><span class="o">=</span><span class="s2">&quot;gcc&quot;</span><span class="p">,</span>
+    <span class="n">CXX</span><span class="o">=</span><span class="s2">&quot;g++&quot;</span><span class="p">,</span>
+    <span class="n">OBJCOPY</span><span class="o">=</span><span class="s2">&quot;objcopy&quot;</span><span class="p">,</span>
+    <span class="n">RANLIB</span><span class="o">=</span><span class="s2">&quot;ranlib&quot;</span><span class="p">,</span>
+
+    <span class="n">UPLOADER</span><span class="o">=</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;$PIOPACKAGES_DIR&quot;</span><span class="p">,</span> <span class="s2">&quot;tool-bar&quot;</span><span class="p">,</span> <span class="s2">&quot;uploader&quot;</span><span class="p">),</span>
+    <span class="n">UPLOADCMD</span><span class="o">=</span><span class="s2">&quot;$UPLOADER $SOURCES&quot;</span>
+<span class="p">)</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">Append</span><span class="p">(</span>
+    <span class="n">ARFLAGS</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;...&quot;</span><span class="p">],</span>
+
+    <span class="n">ASFLAGS</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;flag1&quot;</span><span class="p">,</span> <span class="s2">&quot;flag2&quot;</span><span class="p">,</span> <span class="s2">&quot;flagN&quot;</span><span class="p">],</span>
+    <span class="n">CCFLAGS</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;flag1&quot;</span><span class="p">,</span> <span class="s2">&quot;flag2&quot;</span><span class="p">,</span> <span class="s2">&quot;flagN&quot;</span><span class="p">],</span>
+    <span class="n">CXXFLAGS</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;flag1&quot;</span><span class="p">,</span> <span class="s2">&quot;flag2&quot;</span><span class="p">,</span> <span class="s2">&quot;flagN&quot;</span><span class="p">],</span>
+    <span class="n">LINKFLAGS</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;flag1&quot;</span><span class="p">,</span> <span class="s2">&quot;flag2&quot;</span><span class="p">,</span> <span class="s2">&quot;flagN&quot;</span><span class="p">],</span>
+
+    <span class="n">CPPDEFINES</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DEFINE_1&quot;</span><span class="p">,</span> <span class="s2">&quot;DEFINE=2&quot;</span><span class="p">,</span> <span class="s2">&quot;DEFINE_N&quot;</span><span class="p">],</span>
+
+    <span class="n">LIBS</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;additional&quot;</span><span class="p">,</span> <span class="s2">&quot;libs&quot;</span><span class="p">,</span> <span class="s2">&quot;here&quot;</span><span class="p">],</span>
+
+    <span class="n">BUILDERS</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">ElfToBin</span><span class="o">=</span><span class="n">Builder</span><span class="p">(</span>
+            <span class="n">action</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+                <span class="s2">&quot;$OBJCOPY&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;-O&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;binary&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;$SOURCES&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;$TARGET&quot;</span><span class="p">]),</span>
+            <span class="n">suffix</span><span class="o">=</span><span class="s2">&quot;.bin&quot;</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># The source code of &quot;platformio-build-tool&quot; is here</span>
+<span class="c1"># https://github.com/platformio/platformio-core/blob/develop/platformio/builder/tools/platformio.py</span>
+
+<span class="c1">#</span>
+<span class="c1"># Target: Build executable and linkable firmware</span>
+<span class="c1">#</span>
+<span class="n">target_elf</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">BuildProgram</span><span class="p">()</span>
+
+<span class="c1">#</span>
+<span class="c1"># Target: Build the .bin file</span>
+<span class="c1">#</span>
+<span class="n">target_bin</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">ElfToBin</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;$BUILD_DIR&quot;</span><span class="p">,</span> <span class="s2">&quot;firmware&quot;</span><span class="p">),</span> <span class="n">target_elf</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># Target: Upload firmware</span>
+<span class="c1">#</span>
+<span class="n">upload</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">Alias</span><span class="p">([</span><span class="s2">&quot;upload&quot;</span><span class="p">],</span> <span class="n">target_bin</span><span class="p">,</span> <span class="s2">&quot;$UPLOADCMD&quot;</span><span class="p">)</span>
+<span class="n">AlwaysBuild</span><span class="p">(</span><span class="n">upload</span><span class="p">)</span>
+
+<span class="c1">#</span>
+<span class="c1"># Target: Define targets</span>
+<span class="c1">#</span>
+<span class="n">Default</span><span class="p">(</span><span class="n">target_bin</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="installation">
+<span id="platform-creating-installation"></span><h2><a class="toc-backref" href="#id6">Installation</a><a class="headerlink" href="#installation" title="Permalink to this heading">¶</a></h2>
+<p>Using the “myplatform” platform example above:</p>
+<ol class="arabic simple">
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">platforms</span></code> directory in <a class="reference internal" href="../projectconf/sections/platformio/options/directory/core_dir.html#projectconf-pio-core-dir"><span class="std std-ref">core_dir</span></a> if it
+doesn’t exist.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">myplatform</span></code> directory in <code class="docutils literal notranslate"><span class="pre">platforms</span></code></p></li>
+<li><p>Copy the <code class="docutils literal notranslate"><span class="pre">platform.json</span></code> and <code class="docutils literal notranslate"><span class="pre">builder/main.py</span></code> files to the <code class="docutils literal notranslate"><span class="pre">myplatform</span></code> directory.</p></li>
+<li><p>Search the available platforms via the <a class="reference internal" href="../core/userguide/platforms/cmd_search.html#cmd-platform-search"><span class="std std-ref">pio platform search</span></a> command. You
+should see the new <code class="docutils literal notranslate"><span class="pre">myplatform</span></code> platform.</p></li>
+<li><p>Install the <code class="docutils literal notranslate"><span class="pre">myplatform</span></code> platform via the <a class="reference internal" href="../core/userguide/platforms/cmd_install.html#cmd-platform-install"><span class="std std-ref">pio platform install</span></a> command.</p></li>
+</ol>
+<p>Now, you can use <code class="docutils literal notranslate"><span class="pre">myplatform</span></code> as value for the <a class="reference internal" href="../projectconf/sections/env/options/platform/platform.html#projectconf-env-platform"><span class="std std-ref">platform</span></a>
+option in <a class="reference internal" href="../projectconf/index.html#projectconf"><span class="std std-ref">“platformio.ini” (Project Configuration File)</span></a>.</p>
+</section>
+<section id="publishing">
+<h2><a class="toc-backref" href="#id7">Publishing</a><a class="headerlink" href="#publishing" title="Permalink to this heading">¶</a></h2>
+<p>You can publish a development platform to the <strong>PIO Trusted Registry</strong>
+using <a class="reference internal" href="../core/userguide/pkg/cmd_publish.html#cmd-pkg-publish"><span class="std std-ref">pio pkg publish</span></a> command. Other developers will be able to install it.
+Every time when you modify a source code of a development platform you will need to
+increment the “version” field in “platform.json” manifest and re-publish again.</p>
+<p>If the published development platform has an issue and you would like to remove it from
+the PIO Trusted Registry, please use <a class="reference internal" href="../core/userguide/pkg/cmd_unpublish.html#cmd-pkg-unpublish"><span class="std std-ref">pio pkg unpublish</span></a> command.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="custom_platform_and_board.html" class="btn btn-neutral float-left" title="Custom Hardware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="creating_board.html" class="btn btn-neutral float-right" title="Custom Boards" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+
+    <p>&#169; Copyright 2022 - 2023 www.OS-Q.com.</p>
+<ins data-rvad-zoneid="8" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+  </div>
+
+  
+ 
+<script>
+  var navBarHTML = '\
+<div>\
+  <div class="container container-fluid">\
+    <div class="navbar-header">\
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBarCollapse" aria-expanded="false">\
+        <span class="sr-only">Toggle navigation</span>\
+        <span class="icon-bar"></span>\
+        <span class="icon-bar"></span>\
+        <span class="icon-bar"></span>\
+      </button>\
+      <a class="navbar-brand" href="https://www.OS-Q.com" title="OS-Q"></a>\
+    </div>\
+    <nav role="navigation" class="collapse navbar-collapse" id="navBarCollapse">\
+      <div>\
+        <ul class="nav navbar-nav">\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://stops.top" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs fa-lg"></i>STOPs<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://stops.top"><i class="fa fa-cogs"></i>官网主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/stops-top"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.stops.top"><i class="fa fa-book"></i>产品文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.SoC.xin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-microchip fa-lg"></i>Xindex<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.SoC.xin/"><i class="fa fa-microchip"></i>芯片选型</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/socxin"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.SoC.xin"><i class="fa fa-book"></i>芯闻文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.zeergen.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cube fa-lg"></i>ZeerGen<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.zeergen.com"><i class="fa fa-home"></i>官网主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/zeergen"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.zeergen.com"><i class="fa fa-book"></i>说明文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.qitas.cn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i>Qitas<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.qitas.cn"><i class="fa fa-mars"></i>个人主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/qitas"><i class="fa fa-github"></i>开源主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://docs.qitas.cn"><i class="fa fa-file"></i>知识分享</a></li>\
+            </ul>\
+          </li>\
+        </ul>\
+        <ul class="nav navbar-nav navbar-right">\
+          <li class="active"><a href="https://www.OS-Q.com/pio"><i class="fa fa-book fa-lg"></i>PIO</a></li>\
+          <li class="nav-soc-r"><a href="https://www.OS-Q.com/qio"><i class="fa fa-book fa-lg"></i>QIO</a></li>\
+          <li class="nav-soc-g"><a href="https://www.OS-Q.com"><i class="fa fa-quora fa-lg"></i>主页</a></li>\
+          <li class="nav-soc-b"><a href="https://www.github.com/OS-Q"><i class="fa fa-github fa-lg"></i>开源</a></li>\
+        </ul>\
+      </div>\
+    </nav>\
+  </div>\
+</div>';
+
+  (function() {
+    if (window.location.href.indexOf('http://') === 0) {
+      location.href = 'https:' + window.location.href.substring(5);
+    }
+
+    var topBanner = $('.top-banner');
+    var navBar = document.createElement('header');
+    navBar.className = 'navbar navbar-inverse';
+    navBar.innerHTML = navBarHTML;
+    if (topBanner.length) {
+      $(navBar).insertAfter(topBanner)
+    } else {
+      document.body.insertBefore(navBar, document.body.firstChild);
+    }
+
+    if ($(window).width() <= 768) {
+      return;
+    }
+
+    var topOffset = 50;
+    if (topBanner.length) {
+      topOffset += $('.navbar').offset().top;
+    }
+    $('.wy-nav-side').css('top', topOffset + 'px');
+    $(window).scroll(function() {
+      $('.wy-nav-side').css('top', $(window).scrollTop() > topOffset ? 0 : topOffset + 'px');
+    });
+  })();
+</script>
+<!-- <ins data-rvad-zoneid="11" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+<script async src="https://ad.platformio.org/delivery/revasyncjs.dll"></script> -->
+
+
+</footer>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book">PIO Documentation</span>
+    v6.1.7a1 (latest)
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Created By Qtias</dt>
+      <img src="./_static/images/weixin.jpg">
+        <!-- <dd><a href="https://github.com/OS-Q/docs/blob/pio/source/platforms/creating_platform.rst"> View</a></dd>
+        <dd><a href="https://github.com/OS-Q/docs/edit/pio/source/platforms/creating_platform.rst"> Edit</a></dd> -->
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1768265-7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-1768265-7', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teensy &mdash; PIO</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://www.os-q.com/pio/platforms/teensy.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TI MSP430" href="timsp430.html" />
+    <link rel="prev" title="Silicon Labs EFM32" href="siliconlabsefm32.html" />
+ 
+<link rel="stylesheet" href="../_static/css/extra.css" type="text/css" />
+<script src="../_static/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> PIO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ide/pioide.html">PIO IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">PIO Core (CLI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../home/index.html">PIO Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plus/pio-account.html">PIO Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials and Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../projectconf/index.html">platformio.ini</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projectconf/build_configurations.html">Build Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../envvars.html">Environment variables</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Instruments</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../librarymanager/index.html">Libraries</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Platforms</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#embedded">Embedded</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rp2040.html">RP2040</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ststm8.html">ST STM8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ststm32.html">STM32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="espressif32.html">Espressif</a></li>
+<li class="toctree-l3"><a class="reference internal" href="espressif8266.html">Espressif 8266</a></li>
+<li class="toctree-l3"><a class="reference internal" href="freescalekinetis.html">Freescale Kinetis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intel_mcs51.html">Intel MCS-51 (8051)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lattice_ice40.html">Lattice iCE40</a></li>
+<li class="toctree-l3"><a class="reference internal" href="maxim32.html">Maxim 32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="microchippic32.html">Microchip PIC32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nordicnrf51.html">Nordic nRF51</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nordicnrf52.html">Nordic nRF52</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nxpimxrt.html">NXP i.MX RT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nxplpc.html">NXP LPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="openhw.html">OpenHW Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="riscv_gap.html">RISC-V GAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shakti.html">Shakti</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sifive.html">SiFive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="siliconlabsefm32.html">Silicon Labs EFM32</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Teensy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debugging">Debugging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stable-and-upstream-versions">Stable and upstream versions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#packages">Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#frameworks">Frameworks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boards">Boards</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="timsp430.html">TI MSP430</a></li>
+<li class="toctree-l3"><a class="reference internal" href="titiva.html">TI TIVA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wiznet7500.html">WIZNet W7500</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aceinna_imu.html">Aceinna IMU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atmelavr.html">Atmel AVR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atmelmegaavr.html">Atmel megaAVR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atmelsam.html">Atmel SAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intel_arc32.html">Intel ARC32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chipsalliance.html">CHIPS Alliance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#desktop">Desktop</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../frameworks/index.html">Frameworks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../boards/index.html">Boards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_platform_and_board.html">Custom Hardware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/index.html">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plus/debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/unit-testing/index.html">Unit Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advanced/static-code-analysis/index.html">Static Code Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plus/pio-remote.html">Remote Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Integration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ide/index.html">Cloud &amp; Desktop IDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/ci/index.html">Continuous Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../integration/compile_commands.html">Compilation database</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Miscellaneous</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/history.html">Release Notes</a></li>
+</ul>
+
+<ins data-rvad-zoneid="7" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PIO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+<ins data-rvad-zoneid="1" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Platforms</a></li>
+      <li class="breadcrumb-item active">Teensy</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/OS-Q/docs/blob/pio/source/platforms/teensy.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="teensy">
+<span id="platform-teensy"></span><h1>Teensy<a class="headerlink" href="#teensy" title="Permalink to this heading">¶</a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Registry</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://registry.platformio.org/platforms/platformio/teensy">https://registry.platformio.org/platforms/platformio/teensy</a></p>
+</dd>
+<dt class="field-even">Configuration</dt>
+<dd class="field-even"><p><a class="reference internal" href="../projectconf/sections/env/options/platform/platform.html#projectconf-env-platform"><span class="std std-ref">platform</span></a> = <code class="docutils literal notranslate"><span class="pre">teensy</span></code></p>
+</dd>
+</dl>
+<p>Teensy is a complete USB-based microcontroller development system, in a very small footprint, capable of implementing many types of projects. All programming is done via the USB port. No special programmer is needed, only a standard USB cable and a PC or Macintosh with a USB port.</p>
+<p>For more detailed information please visit <a class="reference external" href="https://www.pjrc.com/teensy?utm_source=platformio.org&amp;utm_medium=docs">vendor site</a>.</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#configuration" id="id4">Configuration</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id5">Examples</a></p></li>
+<li><p><a class="reference internal" href="#debugging" id="id6">Debugging</a></p></li>
+<li><p><a class="reference internal" href="#stable-and-upstream-versions" id="id7">Stable and upstream versions</a></p></li>
+<li><p><a class="reference internal" href="#packages" id="id8">Packages</a></p></li>
+<li><p><a class="reference internal" href="#frameworks" id="id9">Frameworks</a></p></li>
+<li><p><a class="reference internal" href="#boards" id="id10">Boards</a></p></li>
+</ul>
+</div>
+<section id="configuration">
+<h2><a class="toc-backref" href="#id4">Configuration</a><a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
+<div class="contents local topic" id="id1">
+<ul class="simple">
+<li><p><a class="reference internal" href="#optimization" id="id11">Optimization</a></p></li>
+<li><p><a class="reference internal" href="#usb-features" id="id12">USB Features</a></p></li>
+<li><p><a class="reference internal" href="#uploading-using-cli" id="id13">Uploading using CLI</a></p></li>
+</ul>
+</div>
+<section id="optimization">
+<h3><a class="toc-backref" href="#id11">Optimization</a><a class="headerlink" href="#optimization" title="Permalink to this heading">¶</a></h3>
+<p>(valid only for Teensy LC, Teensy 3.0-3.6)</p>
+<p>You can control firmware optimization via special macro/define
+using <a class="reference internal" href="../projectconf/sections/env/options/build/build_flags.html#projectconf-build-flags"><span class="std std-ref">build_flags</span></a> in <a class="reference internal" href="../projectconf/index.html#projectconf"><span class="std std-ref">“platformio.ini” (Project Configuration File)</span></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_FASTER</span></code>, <strong>default</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_FASTER_LTO</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_FAST</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_FAST_LTO</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_FASTEST</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_FASTEST_LTO</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_FASTEST_PURE_CODE</span></code>, valid only for Teensy 3.5-3.6</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_FASTEST_PURE_CODE_LTO</span></code>, valid only for Teensy 3.5-3.6</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_DEBUG</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_DEBUG_LTO</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_SMALLEST_CODE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">TEENSY_OPT_SMALLEST_CODE_LTO</span></code></p></li>
+</ul>
+<p>The only one macro can be used in per one build environment. Also, you can see
+verbose build using <code class="docutils literal notranslate"><span class="pre">-v,</span> <span class="pre">--verbose</span></code> option for <a class="reference internal" href="../core/userguide/cmd_run.html#cmd-run"><span class="std std-ref">pio run</span></a> command.</p>
+<p>Example:</p>
+<p>Let’s set optimization for the smallest code</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[env:teensy_hid_device]</span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">teensy</span>
+<span class="na">framework</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">arduino</span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">teensy36</span>
+<span class="na">build_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-D TEENSY_OPT_SMALLEST_CODE</span>
+</pre></div>
+</div>
+</section>
+<section id="usb-features">
+<h3><a class="toc-backref" href="#id12">USB Features</a><a class="headerlink" href="#usb-features" title="Permalink to this heading">¶</a></h3>
+<p>If you want to use Teensy USB Features, you need to add special macro/define
+using <a class="reference internal" href="../projectconf/sections/env/options/build/build_flags.html#projectconf-build-flags"><span class="std std-ref">build_flags</span></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_SERIAL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_KEYBOARDONLY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_TOUCHSCREEN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_HID_TOUCHSCREEN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_HID</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_SERIAL_HID</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_MIDI</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_MIDI4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_MIDI16</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_MIDI_SERIAL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_MIDI4_SERIAL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_MIDI16_SERIAL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_AUDIO</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_MIDI_AUDIO_SERIAL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_MIDI16_AUDIO_SERIAL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_MTPDISK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_RAWHID</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_FLIGHTSIM</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_FLIGHTSIM_JOYSTICK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_EVERYTHING</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_DISABLED</span></code></p></li>
+</ul>
+<p>A default macro is set to <code class="docutils literal notranslate"><span class="pre">-D</span> <span class="pre">USB_SERIAL</span></code> if no one is specified.</p>
+<p>Example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[env:teensy_hid_device]</span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">teensy</span>
+<span class="na">framework</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">arduino</span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">teensy20</span>
+<span class="na">build_flags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">-D USB_RAWHID</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://www.pjrc.com/teensy/usb_debug_only.html">Teensy USB Examples</a>.</p>
+</section>
+<section id="uploading-using-cli">
+<h3><a class="toc-backref" href="#id13">Uploading using CLI</a><a class="headerlink" href="#uploading-using-cli" title="Permalink to this heading">¶</a></h3>
+<p>By default the Teensy platform uses the graphical version of the Teensy upload tools.
+For cases where the GUI tools cannot be used (e.g. headless OS) the native Teensy
+Loader tool is also available in a command line version which can be enabled directly
+in your project configuration, for example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[env:teensy36]</span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">teensy</span>
+<span class="na">framework</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">arduino</span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">teensy36</span>
+<span class="na">upload_protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">teensy-cli</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id5">Examples</a><a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<p>Examples are listed from <a class="reference external" href="https://github.com/platformio/platform-teensy/tree/master/examples?utm_source=platformio.org&amp;utm_medium=docs">Teensy development platform repository</a>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/platformio/platform-teensy/tree/master/examples/mbed-blink?utm_source=platformio.org&amp;utm_medium=docs">mbed-blink</a></p></li>
+<li><p><a class="reference external" href="https://github.com/platformio/platform-teensy/tree/master/examples/mbed-serial?utm_source=platformio.org&amp;utm_medium=docs">mbed-serial</a></p></li>
+<li><p><a class="reference external" href="https://github.com/platformio/platform-teensy/tree/master/examples/zephyr-blink?utm_source=platformio.org&amp;utm_medium=docs">zephyr-blink</a></p></li>
+<li><p><a class="reference external" href="https://github.com/platformio/platform-teensy/tree/master/examples/mbed-events?utm_source=platformio.org&amp;utm_medium=docs">mbed-events</a></p></li>
+<li><p><a class="reference external" href="https://github.com/platformio/platform-teensy/tree/master/examples/arduino-blink?utm_source=platformio.org&amp;utm_medium=docs">arduino-blink</a></p></li>
+<li><p><a class="reference external" href="https://github.com/platformio/platform-teensy/tree/master/examples/arduino-hid-usb-mouse?utm_source=platformio.org&amp;utm_medium=docs">arduino-hid-usb-mouse</a></p></li>
+<li><p><a class="reference external" href="https://github.com/platformio/platform-teensy/tree/master/examples/arduino-internal-libs?utm_source=platformio.org&amp;utm_medium=docs">arduino-internal-libs</a></p></li>
+<li><p><a class="reference external" href="https://github.com/platformio/platform-teensy/tree/master/examples/mbed-dsp?utm_source=platformio.org&amp;utm_medium=docs">mbed-dsp</a></p></li>
+<li><p><a class="reference external" href="https://github.com/platformio/platform-teensy/tree/master/examples/zephyr-synchronization?utm_source=platformio.org&amp;utm_medium=docs">zephyr-synchronization</a></p></li>
+</ul>
+</section>
+<section id="debugging">
+<h2><a class="toc-backref" href="#id6">Debugging</a><a class="headerlink" href="#debugging" title="Permalink to this heading">¶</a></h2>
+<p><a class="reference internal" href="../plus/debugging.html#piodebug"><span class="std std-ref">Debugging</span></a> - “1-click” solution for debugging with a zero configuration.</p>
+<div class="contents local topic" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#tools-debug-probes" id="id14">Tools &amp; Debug Probes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#external-debug-tools" id="id15">External Debug Tools</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="tools-debug-probes">
+<h3><a class="toc-backref" href="#id14">Tools &amp; Debug Probes</a><a class="headerlink" href="#tools-debug-probes" title="Permalink to this heading">¶</a></h3>
+<p>Supported debugging tools are listed in “Debug” column. For more detailed
+information, please scroll table by horizontal.
+You can switch between debugging <a class="reference internal" href="../plus/debugging.html#debugging-tools"><span class="std std-ref">Tools &amp; Debug Probes</span></a> using
+<a class="reference internal" href="../projectconf/sections/env/options/debug/debug_tool.html#projectconf-debug-tool"><span class="std std-ref">debug_tool</span></a> option in <a class="reference internal" href="../projectconf/index.html#projectconf"><span class="std std-ref">“platformio.ini” (Project Configuration File)</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You will need to install debug tool drivers depending on your system.
+Please click on compatible debug tool below for the further instructions.</p>
+</div>
+<section id="external-debug-tools">
+<h4><a class="toc-backref" href="#id15">External Debug Tools</a><a class="headerlink" href="#external-debug-tools" title="Permalink to this heading">¶</a></h4>
+<p>Boards listed below are compatible with <a class="reference internal" href="../plus/debugging.html#piodebug"><span class="std std-ref">Debugging</span></a> but <strong>DEPEND ON</strong>
+external debug probe. They <strong>ARE NOT READY</strong> for debugging.
+Please click on board name for the further details.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>MCU</p></th>
+<th class="head"><p>Frequency</p></th>
+<th class="head"><p>Flash</p></th>
+<th class="head"><p>RAM</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../boards/teensy/teensymm.html#board-teensy-teensymm"><span class="std std-ref">SparkFun MicroMod Teensy</span></a></p></td>
+<td><p>IMXRT1062</p></td>
+<td><p>600MHz</p></td>
+<td><p>7.75MB</p></td>
+<td><p>512KB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../boards/teensy/teensy31.html#board-teensy-teensy31"><span class="std std-ref">Teensy 3.1 / 3.2</span></a></p></td>
+<td><p>MK20DX256</p></td>
+<td><p>72MHz</p></td>
+<td><p>256KB</p></td>
+<td><p>64KB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../boards/teensy/teensy35.html#board-teensy-teensy35"><span class="std std-ref">Teensy 3.5</span></a></p></td>
+<td><p>MK64FX512</p></td>
+<td><p>120MHz</p></td>
+<td><p>512KB</p></td>
+<td><p>255.99KB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../boards/teensy/teensy36.html#board-teensy-teensy36"><span class="std std-ref">Teensy 3.6</span></a></p></td>
+<td><p>MK66FX1M0</p></td>
+<td><p>180MHz</p></td>
+<td><p>1MB</p></td>
+<td><p>256KB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../boards/teensy/teensy40.html#board-teensy-teensy40"><span class="std std-ref">Teensy 4.0</span></a></p></td>
+<td><p>IMXRT1062</p></td>
+<td><p>600MHz</p></td>
+<td><p>1.94MB</p></td>
+<td><p>512KB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../boards/teensy/teensy41.html#board-teensy-teensy41"><span class="std std-ref">Teensy 4.1</span></a></p></td>
+<td><p>IMXRT1062</p></td>
+<td><p>600MHz</p></td>
+<td><p>7.75MB</p></td>
+<td><p>512KB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../boards/teensy/teensylc.html#board-teensy-teensylc"><span class="std std-ref">Teensy LC</span></a></p></td>
+<td><p>MKL26Z64</p></td>
+<td><p>48MHz</p></td>
+<td><p>62KB</p></td>
+<td><p>8KB</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="stable-and-upstream-versions">
+<h2><a class="toc-backref" href="#id7">Stable and upstream versions</a><a class="headerlink" href="#stable-and-upstream-versions" title="Permalink to this heading">¶</a></h2>
+<p>You can switch between <a class="reference external" href="https://github.com/platformio/platform-teensy/releases">stable releases</a>
+of Teensy development platform and the latest upstream version using
+<a class="reference internal" href="../projectconf/sections/env/options/platform/platform.html#projectconf-env-platform"><span class="std std-ref">platform</span></a> option in <a class="reference internal" href="../projectconf/index.html#projectconf"><span class="std std-ref">“platformio.ini” (Project Configuration File)</span></a> as described below.</p>
+<section id="stable">
+<h3>Stable<a class="headerlink" href="#stable" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">; Latest stable version</span>
+<span class="k">[env:latest_stable]</span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">teensy</span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+
+<span class="c1">; Custom stable version</span>
+<span class="k">[env:custom_stable]</span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">teensy@x.y.z</span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+</pre></div>
+</div>
+</section>
+<section id="upstream">
+<h3>Upstream<a class="headerlink" href="#upstream" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[env:upstream_develop]</span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">https://github.com/platformio/platform-teensy.git</span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">...</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="packages">
+<h2><a class="toc-backref" href="#id8">Packages</a><a class="headerlink" href="#packages" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/framework-arduinoteensy">framework-arduinoteensy</a></p></td>
+<td><p>Arduino Wiring-based Framework for Teensy boards</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/framework-mbed">framework-mbed</a></p></td>
+<td><p>Arm Mbed OS is a platform operating system designed for the internet of things</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/framework-zephyr">framework-zephyr</a></p></td>
+<td><p>Zephyr is a new generation, scalable, optimized, secure RTOS for multiple hardware architectures</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/tool-cmake">tool-cmake</a></p></td>
+<td><p>CMake is an open-source, cross-platform family of tools designed to build, test and package software.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/tool-dtc">tool-dtc</a></p></td>
+<td><p>Device tree compiler</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/tool-gperf">tool-gperf</a></p></td>
+<td><p>GNU gperf is a perfect hash function generator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/tool-jlink">tool-jlink</a></p></td>
+<td><p>Software and Documentation Pack for SEGGER J-Link debug probes</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/tool-ninja">tool-ninja</a></p></td>
+<td><p>Ninja is a small build system with a focus on speed</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/tool-teensy">tool-teensy</a></p></td>
+<td><p>Upload tools for Teensy boards</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/toolchain-atmelavr">toolchain-atmelavr</a></p></td>
+<td><p>GCC Toolchain for Microchip AVR microcontrollers</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://registry.platformio.org/tools/platformio/toolchain-gccarmnoneeabi">toolchain-gccarmnoneeabi</a></p></td>
+<td><p>GNU toolchain for Arm Cortex-M and Cortex-R processors</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Linux Users</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Install “udev” rules <a class="reference internal" href="../core/installation/udev-rules.html#platformio-udev-rules"><span class="std std-ref">99-platformio-udev.rules</span></a></p></li>
+<li><p>Raspberry Pi users, please read this article
+<a class="reference external" href="https://hallard.me/enable-serial-port-on-raspberry-pi/">Enable serial port on Raspberry Pi</a>.</p></li>
+</ul>
+</div></blockquote>
+<p><strong>Windows Users:</strong></p>
+<blockquote>
+<div><p>Teensy programming uses only Windows built-in HID
+drivers. When Teensy is programmed to act as a USB Serial device,
+Windows XP, Vista, 7 and 8 require <a class="reference external" href="http://www.pjrc.com/teensy/serial_install.exe">this serial driver</a>
+is needed to access the COM port your program uses. No special driver
+installation is necessary on Windows 10.</p>
+</div></blockquote>
+</div>
+</section>
+<section id="frameworks">
+<h2><a class="toc-backref" href="#id9">Frameworks</a><a class="headerlink" href="#frameworks" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../frameworks/arduino.html#framework-arduino"><span class="std std-ref">Arduino</span></a></p></td>
+<td><p>Arduino Wiring-based Framework allows writing cross-platform software to control devices attached to a wide range of Arduino boards to create all kinds of creative coding, interactive objects, spaces or physical experiences</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../frameworks/mbed.html#framework-mbed"><span class="std std-ref">Mbed</span></a></p></td>
+<td><p>Arm Mbed OS is an open source embedded operating system designed specifically for the ‘things’ in the Internet of Things. It includes all the features you need to develop a connected product based on an Arm Cortex-M microcontroller, including security, connectivity, an RTOS and drivers for sensors and I/O devices</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../frameworks/zephyr.html#framework-zephyr"><span class="std std-ref">Zephyr</span></a></p></td>
+<td><p>The Zephyr Project is a scalable real-time operating system (RTOS) supporting multiple hardware architectures, optimized for resource constrained devices, and built with safety and security in mind</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="boards">
+<h2><a class="toc-backref" href="#id10">Boards</a><a class="headerlink" href="#boards" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>You can list pre-configured boards by <a class="reference internal" href="../core/userguide/cmd_boards.html#cmd-boards"><span class="std std-ref">pio boards</span></a> command</p></li>
+<li><p>For more detailed <code class="docutils literal notranslate"><span class="pre">board</span></code> information please scroll the tables below by
+horizontally.</p></li>
+</ul>
+</div>
+<section id="sparkfun">
+<h3>SparkFun<a class="headerlink" href="#sparkfun" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Debug</p></th>
+<th class="head"><p>MCU</p></th>
+<th class="head"><p>Frequency</p></th>
+<th class="head"><p>Flash</p></th>
+<th class="head"><p>RAM</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../boards/teensy/teensymm.html#board-teensy-teensymm"><span class="std std-ref">SparkFun MicroMod Teensy</span></a></p></td>
+<td><p>External</p></td>
+<td><p>IMXRT1062</p></td>
+<td><p>600MHz</p></td>
+<td><p>7.75MB</p></td>
+<td><p>512KB</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3>Teensy<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Debug</p></th>
+<th class="head"><p>MCU</p></th>
+<th class="head"><p>Frequency</p></th>
+<th class="head"><p>Flash</p></th>
+<th class="head"><p>RAM</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../boards/teensy/teensy2.html#board-teensy-teensy2"><span class="std std-ref">Teensy 2.0</span></a></p></td>
+<td><p>No</p></td>
+<td><p>ATMEGA32U4</p></td>
+<td><p>16MHz</p></td>
+<td><p>31.50KB</p></td>
+<td><p>2.50KB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../boards/teensy/teensy30.html#board-teensy-teensy30"><span class="std std-ref">Teensy 3.0</span></a></p></td>
+<td><p>No</p></td>
+<td><p>MK20DX128</p></td>
+<td><p>48MHz</p></td>
+<td><p>128KB</p></td>
+<td><p>16KB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../boards/teensy/teensy31.html#board-teensy-teensy31"><span class="std std-ref">Teensy 3.1 / 3.2</span></a></p></td>
+<td><p>External</p></td>
+<td><p>MK20DX256</p></td>
+<td><p>72MHz</p></td>
+<td><p>256KB</p></td>
+<td><p>64KB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../boards/teensy/teensy35.html#board-teensy-teensy35"><span class="std std-ref">Teensy 3.5</span></a></p></td>
+<td><p>External</p></td>
+<td><p>MK64FX512</p></td>
+<td><p>120MHz</p></td>
+<td><p>512KB</p></td>
+<td><p>255.99KB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../boards/teensy/teensy36.html#board-teensy-teensy36"><span class="std std-ref">Teensy 3.6</span></a></p></td>
+<td><p>External</p></td>
+<td><p>MK66FX1M0</p></td>
+<td><p>180MHz</p></td>
+<td><p>1MB</p></td>
+<td><p>256KB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../boards/teensy/teensy40.html#board-teensy-teensy40"><span class="std std-ref">Teensy 4.0</span></a></p></td>
+<td><p>External</p></td>
+<td><p>IMXRT1062</p></td>
+<td><p>600MHz</p></td>
+<td><p>1.94MB</p></td>
+<td><p>512KB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../boards/teensy/teensy41.html#board-teensy-teensy41"><span class="std std-ref">Teensy 4.1</span></a></p></td>
+<td><p>External</p></td>
+<td><p>IMXRT1062</p></td>
+<td><p>600MHz</p></td>
+<td><p>7.75MB</p></td>
+<td><p>512KB</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../boards/teensy/teensylc.html#board-teensy-teensylc"><span class="std std-ref">Teensy LC</span></a></p></td>
+<td><p>External</p></td>
+<td><p>MKL26Z64</p></td>
+<td><p>48MHz</p></td>
+<td><p>62KB</p></td>
+<td><p>8KB</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../boards/teensy/teensy2pp.html#board-teensy-teensy2pp"><span class="std std-ref">Teensy++ 2.0</span></a></p></td>
+<td><p>No</p></td>
+<td><p>AT90USB1286</p></td>
+<td><p>16MHz</p></td>
+<td><p>127KB</p></td>
+<td><p>8KB</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="siliconlabsefm32.html" class="btn btn-neutral float-left" title="Silicon Labs EFM32" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="timsp430.html" class="btn btn-neutral float-right" title="TI MSP430" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+
+    <p>&#169; Copyright 2022 - 2023 www.OS-Q.com.</p>
+<ins data-rvad-zoneid="8" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+  </div>
+
+  
+ 
+<script>
+  var navBarHTML = '\
+<div>\
+  <div class="container container-fluid">\
+    <div class="navbar-header">\
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBarCollapse" aria-expanded="false">\
+        <span class="sr-only">Toggle navigation</span>\
+        <span class="icon-bar"></span>\
+        <span class="icon-bar"></span>\
+        <span class="icon-bar"></span>\
+      </button>\
+      <a class="navbar-brand" href="https://www.OS-Q.com" title="OS-Q"></a>\
+    </div>\
+    <nav role="navigation" class="collapse navbar-collapse" id="navBarCollapse">\
+      <div>\
+        <ul class="nav navbar-nav">\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://stops.top" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs fa-lg"></i>STOPs<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://stops.top"><i class="fa fa-cogs"></i>官网主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/stops-top"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.stops.top"><i class="fa fa-book"></i>产品文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.SoC.xin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-microchip fa-lg"></i>Xindex<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.SoC.xin/"><i class="fa fa-microchip"></i>芯片选型</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/socxin"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.SoC.xin"><i class="fa fa-book"></i>芯闻文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.zeergen.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cube fa-lg"></i>ZeerGen<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.zeergen.com"><i class="fa fa-home"></i>官网主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/zeergen"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.zeergen.com"><i class="fa fa-book"></i>说明文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.qitas.cn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i>Qitas<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.qitas.cn"><i class="fa fa-mars"></i>个人主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/qitas"><i class="fa fa-github"></i>开源主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://docs.qitas.cn"><i class="fa fa-file"></i>知识分享</a></li>\
+            </ul>\
+          </li>\
+        </ul>\
+        <ul class="nav navbar-nav navbar-right">\
+          <li class="active"><a href="https://www.OS-Q.com/pio"><i class="fa fa-book fa-lg"></i>PIO</a></li>\
+          <li class="nav-soc-r"><a href="https://www.OS-Q.com/qio"><i class="fa fa-book fa-lg"></i>QIO</a></li>\
+          <li class="nav-soc-g"><a href="https://www.OS-Q.com"><i class="fa fa-quora fa-lg"></i>主页</a></li>\
+          <li class="nav-soc-b"><a href="https://www.github.com/OS-Q"><i class="fa fa-github fa-lg"></i>开源</a></li>\
+        </ul>\
+      </div>\
+    </nav>\
+  </div>\
+</div>';
+
+  (function() {
+    if (window.location.href.indexOf('http://') === 0) {
+      location.href = 'https:' + window.location.href.substring(5);
+    }
+
+    var topBanner = $('.top-banner');
+    var navBar = document.createElement('header');
+    navBar.className = 'navbar navbar-inverse';
+    navBar.innerHTML = navBarHTML;
+    if (topBanner.length) {
+      $(navBar).insertAfter(topBanner)
+    } else {
+      document.body.insertBefore(navBar, document.body.firstChild);
+    }
+
+    if ($(window).width() <= 768) {
+      return;
+    }
+
+    var topOffset = 50;
+    if (topBanner.length) {
+      topOffset += $('.navbar').offset().top;
+    }
+    $('.wy-nav-side').css('top', topOffset + 'px');
+    $(window).scroll(function() {
+      $('.wy-nav-side').css('top', $(window).scrollTop() > topOffset ? 0 : topOffset + 'px');
+    });
+  })();
+</script>
+<!-- <ins data-rvad-zoneid="11" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+<script async src="https://ad.platformio.org/delivery/revasyncjs.dll"></script> -->
+
+
+</footer>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book">PIO Documentation</span>
+    v6.1.7a1 (latest)
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>Created By Qtias</dt>
+      <img src="./_static/images/weixin.jpg">
+        <!-- <dd><a href="https://github.com/OS-Q/docs/blob/pio/source/platforms/teensy.rst"> View</a></dd>
+        <dd><a href="https://github.com/OS-Q/docs/edit/pio/source/platforms/teensy.rst"> Edit</a></dd> -->
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1768265-7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-1768265-7', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

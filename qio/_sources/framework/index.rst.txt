@@ -44,6 +44,11 @@
 实时系统
 -----------
 
+* **软实时系统**：在软实时系统中系统的宗旨是使各个任务运行得越快越好，并不要求限定某一任务必须在多长时间内完成。
+* **硬实时系统**：在硬实时系统中，各任务不仅要执行无误而且要做到准时。
+
+大多数实时系统是二者的结合。实时系统的应用涵盖广泛的领域，而多数实时系统又是嵌入式的。实时应用软件的设计一般比非实时应用软件设计难一些。
+
 .. list-table::
     :header-rows:  1
 
@@ -63,11 +68,19 @@
       - :ref:`license_apache`
       -
       -
+    * - :ref:`harmonyos`
+      - :ref:`license_apache`
+      -
+      -
 
-* ``软实时系统``：在软实时系统中系统的宗旨是使各个任务运行得越快越好，并不要求限定某一任务必须在多长时间内完成。
-* ``硬实时系统``：在硬实时系统中，各任务不仅要执行无误而且要做到准时。
 
-大多数实时系统是二者的结合。实时系统的应用涵盖广泛的领域，而多数实时系统又是嵌入式的。实时应用软件的设计一般比非实时应用软件设计难一些。
+.. toctree::
+    :maxdepth: 1
+
+    Zephyr <zephyr>
+    freeRTOS <freertos>
+    RT-Thread <rtthread>
+    HarmonyOS <harmonyos>
 
 
 内核(Kernel)
@@ -141,18 +154,9 @@
 
 
 
-.. toctree::
-    :maxdepth: 1
-
-    Zephyr <zephyr>
-    freeRTOS <freertos>
-    RT-Thread <rtthread>
-    HarmonyOS <harmonyos>
-
-
 .. _frameworks_gui:
 
-图形框架
+图形界面
 -----------
 
 .. list-table::
@@ -165,6 +169,11 @@
       - :ref:`license_mit`
       - :ref:`license_apache`
 
+.. toctree::
+    :maxdepth: 1
+
+    LittleVGL <littlevgl>
+    TouchGFX <touchgfx>
 
 
 在单片机领域的GUI框架有：ucgui（STemWin/emwin）、TouchGFX、GuiLite、LittlevGL等。
@@ -176,8 +185,3 @@ TouchGFX都可以很好的解决这些问题，但是只能用于STM32的单片�
 .. note::
     GUI(Graphical User Interface) 图形用户界面。
 
-.. toctree::
-    :maxdepth: 1
-
-    LittleVGL <littlevgl>
-    TouchGFX <touchgfx>

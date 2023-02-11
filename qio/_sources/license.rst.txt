@@ -32,7 +32,7 @@ License
       -
 
 
-.. image:: _static/images/License1.png
+.. image:: _static/images/os-license.png
     :target: https://www.runoob.com/w3cnote/open-source-license.html
 
 .. _license_lgpl:

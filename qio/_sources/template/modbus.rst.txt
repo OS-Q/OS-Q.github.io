@@ -1,0 +1,18 @@
+.. _modbus:
+
+Modbus
+===========
+``TCP`` ``RTU``
+
+Modbus协议是一项应用层报文传输协议，包括ASCII、RTU、TCP三种报文类型。
+
+标准的Modbus协议物理层接口有RS232、RS422、RS485和以太网接口，采用master/slave方式通信。
+
+.. contents::
+    :local:
+    :depth: 1
+
+
+.. include:: ../../../templates/modbus/readme.rst
+.. include:: ../../../templates/rtu/readme.rst
+

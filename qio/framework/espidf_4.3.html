@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESP-IDF v4.3 &mdash; QIO</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="canonical" href="https://www.os-q.com/qio/framework/espidf_4.3.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+ 
+<link rel="stylesheet" href="../_static/css/extra.css" type="text/css" />
+<script src="../_static/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> QIO
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">开源证书</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../version.html">版本迭代</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">核心资源</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../template/index.html">工程模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/index.html">辅助设施</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">关联组件</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">流行框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../standard/index.html">行业标准</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">生态接入</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../basic/coder.html">代码编辑</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic/kicad.html">硬件设计</a></li>
+</ul>
+
+<ins data-rvad-zoneid="7" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QIO</a>
+      </nav>
+
+      <div class="wy-nav-content">
+<ins data-rvad-zoneid="1" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">ESP-IDF v4.3</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/OS-Q/docs/blob/qio/source/framework/espidf_4.3.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="esp-idf-v4-3">
+<h1>ESP-IDF v4.3<a class="headerlink" href="#esp-idf-v4-3" title="Permalink to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">ESP32-C3</span></code></p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id5">安装配置</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id6">工程示例</a></p></li>
+</ul>
+</div>
+<section id="id1">
+<h2><a class="toc-backref" href="#id5">安装配置</a><a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<div class="contents local topic" id="id2">
+<ul class="simple">
+<li><p><a class="reference internal" href="#project-structure" id="id7">Project Structure</a></p></li>
+<li><p><a class="reference internal" href="#ulp-coprocessor-programming" id="id8">ULP coprocessor programming</a></p></li>
+<li><p><a class="reference internal" href="#limitations" id="id9">Limitations</a></p></li>
+</ul>
+</div>
+<p>The general project configuration (default optimization level, bootloader configuration
+partition tables, etc) is set in a single file called <code class="docutils literal notranslate"><span class="pre">sdkconfig</span></code> in the root folder
+of the project. This configuration file can be modified via a special target called
+<code class="docutils literal notranslate"><span class="pre">menuconfig</span></code> (PlatformIO v4.3.0 greater is required):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pio run -t menuconfig
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If menuconfig is not showed properly in the integrated VS Code terminal try changing
+the default terminal shell by clicking the dropdown menu on the top-right of the
+terminal panel and selectiing the <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Default</span> <span class="pre">Shell</span></code> option.</p>
+</div>
+<section id="project-structure">
+<h3><a class="toc-backref" href="#id7">Project Structure</a><a class="headerlink" href="#project-structure" title="Permalink to this heading">¶</a></h3>
+<p>The ESP-IDF framework requires an unusual project structure because most of the framework
+configuration is performed by the native for the ESP-IDF build system called <code class="docutils literal notranslate"><span class="pre">CMake</span></code>.</p>
+<p>A typical PlatformIO project for the ESP-IDF framework must have the following structure:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>project_dir
+├── include
+├── src
+│    ├── CMakeLists.txt
+│    └── main.c
+├── CMakeLists.txt
+└── platformio.ini
+
+.. code-block:: ini
+
+    [platformio]
+    src_dir = main
+
+    [env:esp32dev]
+    platform = espressif32
+    framework = espidf
+    board = esp32dev
+</pre></div>
+</div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># The following lines of boilerplate have to be in your project&#39;s CMakeLists</span>
+<span class="c"># in this exact order for cmake to work correctly</span>
+<span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.16.0</span><span class="p">)</span>
+
+<span class="nb">include</span><span class="p">(</span><span class="o">$ENV{</span><span class="nv">IDF_PATH</span><span class="o">}</span><span class="s">/tools/cmake/project.cmake</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">project-name</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">idf_component_register</span><span class="p">(</span><span class="s">SRCS</span><span class="w"> </span><span class="s2">&quot;foo.c&quot;</span><span class="w"> </span><span class="s2">&quot;bar.c&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The files specified using <code class="docutils literal notranslate"><span class="pre">idf_component_register</span></code> are used <strong>ONLY</strong> for generating
+build configurations, but it’s highly recommended to specify all application source
+files in order to keep the project compatible with the usual ESP-IDF workflow.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>By default PlatformIO expects source files to be located in the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder. At
+the same time, the default location for source files within the ESP-IDF build system
+is a special folder with the name <code class="docutils literal notranslate"><span class="pre">main</span></code>. Renaming the main component may require
+users to manually specify additional dependencies:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">idf_component_register</span><span class="p">(</span><span class="s">SRCS</span><span class="w"> </span><span class="s2">&quot;main.c&quot;</span><span class="w"> </span><span class="s">REQUIRES</span><span class="w"> </span><span class="s">idf::mbedtls</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>More details in the official ESP-IDF documentation -
+<a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html?highlight=rename#renaming-main-component">Renaming main component</a>.</p>
+</div>
+<p>Due to the current limitations of CMake file-based API, there is no way of generating
+build configuration for source files written in various programming languages if they
+are not specified in  <code class="docutils literal notranslate"><span class="pre">idf_component_register</span></code> command. If your project contains
+libraries written in languages that differ from the language used for the main
+application you need to create an empty file with the desired extension (e.g. <code class="docutils literal notranslate"><span class="pre">*.cpp</span></code>
+for <code class="docutils literal notranslate"><span class="pre">C++</span></code>) in order to force CMake generate build configuration for this language.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Build configuration generated for source files specified in <code class="docutils literal notranslate"><span class="pre">idf_component_register</span></code>
+is also used as the base build environment for project sources (including libraries).</p>
+</div>
+</section>
+<section id="ulp-coprocessor-programming">
+<h3><a class="toc-backref" href="#id8">ULP coprocessor programming</a><a class="headerlink" href="#ulp-coprocessor-programming" title="Permalink to this heading">¶</a></h3>
+<p>If you want to take measurements using ADC, internal temperature sensor or external
+I2C sensors, while the main processors are in deep sleep mode you need to use ULP
+coprocessor. At the moment ULP can be used only with the <a class="reference internal" href="espidf.html#espidf"><span class="std std-ref">ESP-IDF</span></a>.</p>
+<p>All ULP code, usually written in assembly in files with <code class="docutils literal notranslate"><span class="pre">.S</span></code> extension,
+must be placed into a separate directory with the name <code class="docutils literal notranslate"><span class="pre">ulp</span></code> in the root folder
+of your project. So your project structure should look like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>project_dir
+├── include
+├── src
+│    ├── CMakeLists.txt
+│    └── main.c
+├── ulp
+│    └── ulp_code.S
+├── CMakeLists.txt
+└── platformio.ini
+</pre></div>
+</div>
+<p>Since PlatformIO uses the code model generated by CMake it’s mandatory to specify ULP
+source files in <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> as well. An example of typical <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>
+for ULP:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">idf_component_register</span><span class="p">(</span><span class="s">SRCS</span><span class="w"> </span><span class="s2">&quot;ulp_adc_example_main.c&quot;</span><span class="p">)</span>
+<span class="c">#</span>
+<span class="c"># ULP support additions to component CMakeLists.txt.</span>
+<span class="c">#</span>
+<span class="c"># 1. The ULP app name must be &quot;ulp_main&quot;</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">ulp_app_name</span><span class="w"> </span><span class="s">ulp_main</span><span class="p">)</span>
+<span class="c">#</span>
+<span class="c"># 2. Specify all assembly source files.</span>
+<span class="c">#    Paths are relative because ULP files are placed into a special directory &quot;ulp&quot;</span>
+<span class="c">#    in the root of the project</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">ulp_s_sources</span><span class="w"> </span><span class="s2">&quot;../ulp/adc.S&quot;</span><span class="p">)</span>
+<span class="c">#</span>
+<span class="c"># 3. List all the component source files which include automatically</span>
+<span class="c">#    generated ULP export file, ${ulp_app_name}.h:</span>
+<span class="nb">set</span><span class="p">(</span><span class="s">ulp_exp_dep_srcs</span><span class="w"> </span><span class="s2">&quot;ulp_adc_example_main.c&quot;</span><span class="p">)</span>
+<span class="c">#</span>
+<span class="c"># 4. Call function to build ULP binary and embed in project using the argument</span>
+<span class="c">#    values above.</span>
+<span class="nb">ulp_embed_binary</span><span class="p">(</span><span class="o">${</span><span class="nv">ulp_app_name</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">ulp_s_sources</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nv">ulp_exp_dep_srcs</span><span class="o">}</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See full examples with ULP coprocessor programming:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/platformio/platform-espressif32/tree/develop/examples/espidf-ulp-adc">https://github.com/platformio/platform-espressif32/tree/develop/examples/espidf-ulp-adc</a></p></li>
+<li><p><a class="reference external" href="https://github.com/platformio/platform-espressif32/tree/develop/examples/espidf-ulp-pulse">https://github.com/platformio/platform-espressif32/tree/develop/examples/espidf-ulp-pulse</a></p></li>
+</ul>
+<p>More details are located in the official ESP-IDF documentation -
+<a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/ulp.html#accessing-ulp-program-variable">ULP coprocessor programming</a>.</p>
+</section>
+<section id="limitations">
+<h3><a class="toc-backref" href="#id9">Limitations</a><a class="headerlink" href="#limitations" title="Permalink to this heading">¶</a></h3>
+<p>At the moment several limitations are present:</p>
+<ul>
+<li><p>No whitespace characters allowed in project paths. This limitation is imposed by the
+<a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html?highlight=spaces#step-2-get-esp-idf">native ESP-IDF build system</a>.
+This affects users that have a whitespace in their username or added a whitespace to
+the project name. As a workaround. For example:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[platformio]</span>
+<span class="na">core_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">C:/.platformio</span>
+
+<span class="k">[env:esp32dev]</span>
+<span class="na">platform</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">espressif32</span>
+<span class="na">framework</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">espidf</span>
+<span class="na">board</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">esp32dev</span>
+</pre></div>
+</div>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">src_filter</span></code> option cannot be used. It’s done to preserve compatibility with
+existing ESP-IDF projects. List of source files is specified in the project
+<code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.</p></li>
+</ul>
+</section>
+</section>
+<section id="id4">
+<h2><a class="toc-backref" href="#id6">工程示例</a><a class="headerlink" href="#id4" title="Permalink to this heading">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>examples
+├── bluetooth
+│    ├── bluedroid
+│    ├── blufi
+│    ├── esp_ble_mesh
+│    ├── esp_hid_device
+│    ├── esp_hid_host
+│    ├── hci
+│    └── nimble
+├── mesh
+│    ├── internal_communication
+│    ├── ip_internal_network
+│    └── manual_networking
+└── README.md
+</pre></div>
+</div>
+<section id="bluedroid">
+<h3>bluedroid<a class="headerlink" href="#bluedroid" title="Permalink to this heading">¶</a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+
+    <p>&#169; Copyright 2022 - 2023 www.OS-Q.com.</p>
+<ins data-rvad-zoneid="8" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+
+  </div>
+
+  
+ 
+<script>
+  var navBarHTML = '\
+<div>\
+  <div class="container container-fluid">\
+    <div class="navbar-header">\
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBarCollapse" aria-expanded="false">\
+        <span class="sr-only">Toggle navigation</span>\
+        <span class="icon-bar"></span>\
+        <span class="icon-bar"></span>\
+        <span class="icon-bar"></span>\
+      </button>\
+      <a class="navbar-brand" href="https://www.OS-Q.com" title="OS-Q"></a>\
+    </div>\
+    <nav role="navigation" class="collapse navbar-collapse" id="navBarCollapse">\
+      <div>\
+        <ul class="nav navbar-nav">\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://stops.top" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cogs fa-lg"></i>STOPs<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://stops.top"><i class="fa fa-cogs"></i>官网主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/stops-top"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.stops.top"><i class="fa fa-book"></i>产品文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.SoC.xin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-microchip fa-lg"></i>Xindex<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.SoC.xin/"><i class="fa fa-microchip"></i>芯片选型</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/socxin"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.SoC.xin"><i class="fa fa-book"></i>芯闻文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.zeergen.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cube fa-lg"></i>zeerGen<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.zeergen.com"><i class="fa fa-home"></i>官网主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/zeergen"><i class="fa fa-github"></i>开源社区</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://doc.zeergen.com"><i class="fa fa-book"></i>说明文档</a></li>\
+            </ul>\
+          </li>\
+          <li class="dropdown">\
+            <a role="button" data-target="#" href="https://www.qitas.cn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i>Qitas<span class="caret"></span>\
+            </a>\
+            <ul class="dropdown-menu" role="menu">\
+              <li role="menuitem"><a href="https://www.qitas.cn"><i class="fa fa-mars"></i>个人主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://www.github.com/qitas"><i class="fa fa-github"></i>开源主页</a></li>\
+              <li role="separator" class="divider"></li>\
+              <li role="menuitem"><a href="https://docs.qitas.cn"><i class="fa fa-file"></i>知识分享</a></li>\
+            </ul>\
+          </li>\
+        </ul>\
+        <ul class="nav navbar-nav navbar-right">\
+          <li class="active"><a href="https://www.os-q.com/qio"><i class="fa fa-book fa-lg"></i>QIO</a></li>\
+          <li class="nav-soc-r"><a href="https://www.OS-Q.com/pio"><i class="fa fa-book fa-lg"></i>PIO</a></li>\
+          <li class="nav-soc-g"><a href="https://www.OS-Q.com"><i class="fa fa-quora fa-lg"></i>主页</a></li>\
+          <li class="nav-soc-b"><a href="https://github.com/OS-Q/qio"><i class="fa fa-github fa-lg"></i>仓库</a></li>\
+        </ul>\
+      </div>\
+    </nav>\
+  </div>\
+</div>';
+
+  (function() {
+    if (window.location.href.indexOf('http://') === 0) {
+      location.href = 'https:' + window.location.href.substring(5);
+    }
+
+    var topBanner = $('.top-banner');
+    var navBar = document.createElement('header');
+    navBar.className = 'navbar navbar-inverse';
+    navBar.innerHTML = navBarHTML;
+    if (topBanner.length) {
+      $(navBar).insertAfter(topBanner)
+    } else {
+      document.body.insertBefore(navBar, document.body.firstChild);
+    }
+
+    if ($(window).width() <= 768) {
+      return;
+    }
+
+    var topOffset = 50;
+    if (topBanner.length) {
+      topOffset += $('.navbar').offset().top;
+    }
+    $('.wy-nav-side').css('top', topOffset + 'px');
+    $(window).scroll(function() {
+      $('.wy-nav-side').css('top', $(window).scrollTop() > topOffset ? 0 : topOffset + 'px');
+    });
+  })();
+</script>
+<!-- <ins data-rvad-zoneid="11" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
+<script async src="https://ad.platformio.org/delivery/revasyncjs.dll"></script> -->
+
+
+</footer>
+        </div>
+
+      </div>
+    </section>
+  </div>
+  
+
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    <span class="fa fa-book">QIO Documentation</span> v0.1.0
+    <span class="fa fa-caret-down"></span>
+  </span>
+  <div class="rst-other-versions">
+    <dl>
+      <dt>OS-Q Created By Qtias</dt>
+      <img src="./_static/images/weixin.jpg">
+        <!-- <dd><a href="https://github.com/OS-Q/docs/blob/qio/source/framework/espidf_4.3.rst"> View</a></dd>
+        <dd><a href="https://github.com/OS-Q/docs/edit/qio/source/framework/espidf_4.3.rst"> Edit</a></dd> -->
+    </dl>
+  </div>
+</div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1768265-7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-1768265-7', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

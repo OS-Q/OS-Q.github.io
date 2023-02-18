@@ -3,10 +3,7 @@
 KiCad
 ===========
 
-* 开源协议 : :ref:`license_gpl`
-* 资源链接 : `官网 <https://www.kicad.org/>`_
-
-KiCad于1992年由Jean-Pierre Charras在IUT de Grenoble工作时创建。2013年，CERN BE-CO-HT部门开始为KiCad提供资源，帮助促进KiCad与商用EDA工具相媲美。
+`KiCad EDA <https://www.kicad.org/>`_ 于1992年由Jean-Pierre Charras在IUT de Grenoble工作时创建，基于 :ref:`license_gpl` 进行开源。2013年，CERN BE-CO-HT部门开始为KiCad提供资源，帮助促进KiCad与商用EDA工具相媲美。
 
 * GPL开源软件，同时维护有大量开源资源
 * 图形操作界面，鼠标和键盘操作很方便，支持脚本

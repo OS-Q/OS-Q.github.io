@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KiCad &mdash; QIO</title>
+  <title>KiCad &mdash; qio</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
@@ -37,7 +37,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> QIO
+            <a href="../index.html" class="icon icon-home"> qio
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -54,22 +54,22 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">核心资源</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../template/index.html">工程模板</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../support/index.html">辅助设施</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../templates/index.html">应用模板</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/index.html">辅助工具</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">关联组件</span></p>
+<p class="caption" role="heading"><span class="caption-text">用户开发</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../framework/index.html">流行框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../framework/index.html">基础框架</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../standard/index.html">行业标准</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">生态接入</span></p>
+<p class="caption" role="heading"><span class="caption-text">创作工具</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="coder.html">代码编辑</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">硬件设计</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#eeschema">eeschema</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cvpcb">cvpcb</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#pcbnew">pcbnew</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">层描述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">层描述</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#gerbview">gerbview</a></li>
@@ -85,7 +85,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">QIO</a>
+          <a href="../index.html">qio</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -107,11 +107,7 @@
              
   <section id="kicad">
 <span id="id1"></span><h1>KiCad<a class="headerlink" href="#kicad" title="Permalink to this heading">¶</a></h1>
-<ul class="simple">
-<li><p>开源协议 : <a class="reference internal" href="../license.html#license-gpl"><span class="std std-ref">GPL</span></a></p></li>
-<li><p>资源链接 : <a class="reference external" href="https://www.kicad.org/">官网</a></p></li>
-</ul>
-<p>KiCad于1992年由Jean-Pierre Charras在IUT de Grenoble工作时创建。2013年，CERN BE-CO-HT部门开始为KiCad提供资源，帮助促进KiCad与商用EDA工具相媲美。</p>
+<p><a class="reference external" href="https://www.kicad.org/">KiCad EDA</a> 于1992年由Jean-Pierre Charras在IUT de Grenoble工作时创建，基于 <a class="reference internal" href="../license.html#license-gpl"><span class="std std-ref">GPL</span></a> 进行开源。2013年，CERN BE-CO-HT部门开始为KiCad提供资源，帮助促进KiCad与商用EDA工具相媲美。</p>
 <ul class="simple">
 <li><p>GPL开源软件，同时维护有大量开源资源</p></li>
 <li><p>图形操作界面，鼠标和键盘操作很方便，支持脚本</p></li>
@@ -131,15 +127,15 @@
 <li><p><a class="reference internal" href="#gerbview"><span class="std std-ref">gerbview</span></a> - Gerber(光绘文件)查看器</p></li>
 </ul>
 <section id="eeschema">
-<span id="id3"></span><h2>eeschema<a class="headerlink" href="#eeschema" title="Permalink to this heading">¶</a></h2>
+<span id="id2"></span><h2>eeschema<a class="headerlink" href="#eeschema" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="cvpcb">
-<span id="id4"></span><h2>cvpcb<a class="headerlink" href="#cvpcb" title="Permalink to this heading">¶</a></h2>
+<span id="id3"></span><h2>cvpcb<a class="headerlink" href="#cvpcb" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="pcbnew">
-<span id="id5"></span><h2>pcbnew<a class="headerlink" href="#pcbnew" title="Permalink to this heading">¶</a></h2>
-<section id="id6">
-<h3>层描述<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h3>
+<span id="id4"></span><h2>pcbnew<a class="headerlink" href="#pcbnew" title="Permalink to this heading">¶</a></h2>
+<section id="id5">
+<h3>层描述<a class="headerlink" href="#id5" title="Permalink to this heading">¶</a></h3>
 <p>Pcbnew的层描述中F.代表电路板上层（Front），B.代表电路板的下层（Back）</p>
 <p>铜层是用于放置和重新布置导线的工作层。 层号从0开始（第一个铜层，在上层，即F.Cu），并以31（最后一个铜层，在下层，即B.Cu）结束。 由于元件不能放置在内层（层1到层30）中，所以只有层0（F.Cu）和层31（B.Cu）是元件层。</p>
 <p>任何铜层的名字都是可以编辑的。层0的默认名称为F.Cu，层31的默认名称为B.Cu。当电路板是2层板时，层0和层31之间没有其他的铜层。当电路板是4层板时，层0和层31中间多了两个铜层，名称按从上层到下层的顺序依次为 In1.Cu 和 In2.Cu。当电路板是6层板时，层0和层31中间多了四个铜层，名称按从上层到下层的顺序依次为 In1.Cu，In2.Cu，In3.Cu 和 In4.Cu。</p>
@@ -161,7 +157,7 @@
 </section>
 </section>
 <section id="gerbview">
-<span id="id7"></span><h2>gerbview<a class="headerlink" href="#gerbview" title="Permalink to this heading">¶</a></h2>
+<span id="id6"></span><h2>gerbview<a class="headerlink" href="#gerbview" title="Permalink to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -176,7 +172,7 @@
 
   <div role="contentinfo">
 
-    <p>&#169; Copyright 2022 - 2023 www.OS-Q.com.</p>
+    <p>&#169; Copyright 2022 - 2023 www.os-q.com.</p>
 <ins data-rvad-zoneid="8" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
 
   </div>
@@ -194,7 +190,7 @@
         <span class="icon-bar"></span>\
         <span class="icon-bar"></span>\
       </button>\
-      <a class="navbar-brand" href="https://www.OS-Q.com" title="OS-Q"></a>\
+      <a class="navbar-brand" href="https://www.os-q.com" title="OS-Q"></a>\
     </div>\
     <nav role="navigation" class="collapse navbar-collapse" id="navBarCollapse">\
       <div>\
@@ -245,9 +241,9 @@
           </li>\
         </ul>\
         <ul class="nav navbar-nav navbar-right">\
-          <li class="active"><a href="https://www.os-q.com/qio"><i class="fa fa-book fa-lg"></i>QIO</a></li>\
-          <li class="nav-soc-r"><a href="https://www.OS-Q.com/pio"><i class="fa fa-book fa-lg"></i>PIO</a></li>\
-          <li class="nav-soc-g"><a href="https://www.OS-Q.com"><i class="fa fa-quora fa-lg"></i>主页</a></li>\
+          <li class="active"><a href="https://www.os-q.com/qio"><i class="fa fa-book fa-lg"></i>qio</a></li>\
+          <li class="nav-soc-r"><a href="https://www.os-q.com/pio"><i class="fa fa-book fa-lg"></i>pio</a></li>\
+          <li class="nav-soc-g"><a href="https://www.os-q.com"><i class="fa fa-quora fa-lg"></i>主页</a></li>\
           <li class="nav-soc-b"><a href="https://github.com/OS-Q/qio"><i class="fa fa-github fa-lg"></i>仓库</a></li>\
         </ul>\
       </div>\
@@ -298,7 +294,7 @@
 
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
-    <span class="fa fa-book">QIO Documentation</span> v0.1.0
+    <span class="fa fa-book">qio documentation</span> v0.1.0
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">

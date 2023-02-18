@@ -16,6 +16,7 @@ templates
 .. toctree::
     :maxdepth: 1
 
-    Modbus <modbus>
     MQTT <mqtt>
     HMI <hmi>
+    RTU <rtu>
+    Modbus <modbus>

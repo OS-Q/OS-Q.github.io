@@ -1,0 +1,16 @@
+.. _rtu:
+
+RTU
+===========
+``Modbus`` ``Slave``
+
+Modbus RTU 可分为主站(poll)和从站(slave)，每个系统中主站只有一个，从站有多个，主站向各从站发送请求帧，从站给予响应。
+
+基于最简单的RTU协议，可以实现设备控制和数据采集等功能，方案简单易于部署。
+
+.. contents::
+    :local:
+    :depth: 1
+
+.. include:: ../../../templates/rtu/readme.rst
+

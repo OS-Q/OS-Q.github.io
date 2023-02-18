@@ -4,12 +4,12 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modbus &mdash; QIO</title>
+  <title>Modbus &mdash; qio</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="canonical" href="https://www.os-q.com/qio/template/modbus.html" />
+    <link rel="canonical" href="https://www.os-q.com/qio/templates/modbus.html" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -25,8 +25,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="MQTT" href="mqtt.html" />
-    <link rel="prev" title="templates" href="index.html" />
+    <link rel="next" title="辅助设施" href="../support/index.html" />
+    <link rel="prev" title="RTU" href="rtu.html" />
  
 <link rel="stylesheet" href="../_static/css/extra.css" type="text/css" />
 <script src="../_static/js/bootstrap.min.js"></script>
@@ -38,7 +38,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> QIO
+            <a href="../index.html" class="icon icon-home"> qio
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -55,7 +55,10 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">核心资源</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">工程模板</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">应用模板</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mqtt.html">MQTT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmi.html">HMI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rtu.html">RTU</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Modbus</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#template-modbus">Template-Modbus</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#applications">applications</a></li>
@@ -65,28 +68,18 @@
 <li class="toctree-l4"><a class="reference internal" href="#hardware">hardware</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#rtu-slave">RTU-Slave</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#rtu-app">applications</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rtu-std">standard</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rtu-lib">libraries</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rtu-if">interface</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rtu-hw">hardware</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="mqtt.html">MQTT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hmi.html">HMI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/index.html">辅助工具</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../support/index.html">辅助设施</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">关联组件</span></p>
+<p class="caption" role="heading"><span class="caption-text">用户开发</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../framework/index.html">流行框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../framework/index.html">基础框架</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../standard/index.html">行业标准</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">生态接入</span></p>
+<p class="caption" role="heading"><span class="caption-text">创作工具</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../basic/coder.html">代码编辑</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../basic/kicad.html">硬件设计</a></li>
@@ -100,7 +93,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">QIO</a>
+          <a href="../index.html">qio</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -113,7 +106,7 @@
           <li class="breadcrumb-item"><a href="index.html">templates</a></li>
       <li class="breadcrumb-item active">Modbus</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/OS-Q/docs/blob/qio/source/template/modbus.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/OS-Q/docs/blob/qio/source/templates/modbus.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -128,12 +121,11 @@
 <p>标准的Modbus协议物理层接口有RS232、RS422、RS485和以太网接口，采用master/slave方式通信。</p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#template-modbus" id="id9">Template-Modbus</a></p></li>
-<li><p><a class="reference internal" href="#rtu-slave" id="id10">RTU-Slave</a></p></li>
+<li><p><a class="reference internal" href="#template-modbus" id="id3">Template-Modbus</a></p></li>
 </ul>
 </div>
 <section id="template-modbus">
-<span id="modbus-tcp"></span><h2><a class="toc-backref" href="#id9">Template-Modbus</a><a class="headerlink" href="#template-modbus" title="Permalink to this heading">¶</a></h2>
+<span id="modbus-tcp"></span><h2><a class="toc-backref" href="#id3">Template-Modbus</a><a class="headerlink" href="#template-modbus" title="Permalink to this heading">¶</a></h2>
 <a class="reference external image-reference" href="https://github.com/OS-Q/template-modbus/actions"><img alt="https://github.com/OS-Q/template-modbus/workflows/sdk/badge.svg" src="https://github.com/OS-Q/template-modbus/workflows/sdk/badge.svg" /></a>
 <p>本模板基于Modbus RTU/TCP双协议栈，主从机双模式。</p>
 <p>Modbus TCP 通信主站为client，主动建立连接；从站为server端，等待连接。IANA（Internet Assigned Numbers Authority，互联网编号分配管理机构）给Modbus协议赋予TCP端口号为502，这是目前在仪表与自动化行业中唯一分配到的端口号。</p>
@@ -147,18 +139,18 @@
 </ul>
 <div class="contents local topic" id="id2">
 <ul class="simple">
-<li><p><a class="reference internal" href="#applications" id="id11">applications</a></p></li>
-<li><p><a class="reference internal" href="#standard" id="id12">standard</a></p></li>
-<li><p><a class="reference internal" href="#libraries" id="id13">libraries</a></p></li>
-<li><p><a class="reference internal" href="#interface" id="id14">interface</a></p></li>
-<li><p><a class="reference internal" href="#hardware" id="id15">hardware</a></p></li>
+<li><p><a class="reference internal" href="#applications" id="id4">applications</a></p></li>
+<li><p><a class="reference internal" href="#standard" id="id5">standard</a></p></li>
+<li><p><a class="reference internal" href="#libraries" id="id6">libraries</a></p></li>
+<li><p><a class="reference internal" href="#interface" id="id7">interface</a></p></li>
+<li><p><a class="reference internal" href="#hardware" id="id8">hardware</a></p></li>
 </ul>
 </div>
 <section id="applications">
-<span id="modbus-app"></span><h3><a class="toc-backref" href="#id11">applications</a><a class="headerlink" href="#applications" title="Permalink to this heading">¶</a></h3>
+<span id="modbus-app"></span><h3><a class="toc-backref" href="#id4">applications</a><a class="headerlink" href="#applications" title="Permalink to this heading">¶</a></h3>
 </section>
 <section id="standard">
-<span id="modbus-std"></span><h3><a class="toc-backref" href="#id12">standard</a><a class="headerlink" href="#standard" title="Permalink to this heading">¶</a></h3>
+<span id="modbus-std"></span><h3><a class="toc-backref" href="#id5">standard</a><a class="headerlink" href="#standard" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>双串口，至少一路支持RS485通信</p></li>
 <li><p>串口波特率2400/4800/9600/19200/38400/57600/115200</p></li>
@@ -167,78 +159,13 @@
 </ul>
 </section>
 <section id="libraries">
-<span id="modbus-lib"></span><h3><a class="toc-backref" href="#id13">libraries</a><a class="headerlink" href="#libraries" title="Permalink to this heading">¶</a></h3>
+<span id="modbus-lib"></span><h3><a class="toc-backref" href="#id6">libraries</a><a class="headerlink" href="#libraries" title="Permalink to this heading">¶</a></h3>
 </section>
 <section id="interface">
-<span id="modbus-if"></span><h3><a class="toc-backref" href="#id14">interface</a><a class="headerlink" href="#interface" title="Permalink to this heading">¶</a></h3>
+<span id="modbus-if"></span><h3><a class="toc-backref" href="#id7">interface</a><a class="headerlink" href="#interface" title="Permalink to this heading">¶</a></h3>
 </section>
 <section id="hardware">
-<span id="modbus-hw"></span><h3><a class="toc-backref" href="#id15">hardware</a><a class="headerlink" href="#hardware" title="Permalink to this heading">¶</a></h3>
-</section>
-</section>
-<section id="rtu-slave">
-<span id="modbus-rtu"></span><h2><a class="toc-backref" href="#id10">RTU-Slave</a><a class="headerlink" href="#rtu-slave" title="Permalink to this heading">¶</a></h2>
-<a class="reference external image-reference" href="https://github.com/OS-Q/template-rtu/actions"><img alt="https://github.com/OS-Q/template-rtu/workflows/sdk/badge.svg" src="https://github.com/OS-Q/template-rtu/workflows/sdk/badge.svg" /></a>
-<p>Modbus RTU 可分为主站(poll)和从站(slave)，每个系统中主站只有一个，从站有多个，主站向各从站发送请求帧，从站给予响应。</p>
-<p>本模板基于Modbus-RTU实现通信和控制</p>
-<div class="contents local topic" id="id3">
-<ul class="simple">
-<li><p><a class="reference internal" href="#rtu-app" id="id16">applications</a></p></li>
-<li><p><a class="reference internal" href="#rtu-std" id="id17">standard</a></p></li>
-<li><p><a class="reference internal" href="#rtu-lib" id="id18">libraries</a></p></li>
-<li><p><a class="reference internal" href="#rtu-if" id="id19">interface</a></p></li>
-<li><p><a class="reference internal" href="#rtu-hw" id="id20">hardware</a></p></li>
-</ul>
-</div>
-<section id="rtu-app">
-<span id="id4"></span><h3><a class="toc-backref" href="#id16">applications</a><a class="headerlink" href="#rtu-app" title="Permalink to this heading">¶</a></h3>
-<p>通过RTU通信寄存器定义相关调试接口，实现高效的数据调试和问题诊断，相关的调试功能对应的寄存器都是标准化的，可以和上位机组态控制和兼容。</p>
-</section>
-<section id="rtu-std">
-<span id="id5"></span><h3><a class="toc-backref" href="#id17">standard</a><a class="headerlink" href="#rtu-std" title="Permalink to this heading">¶</a></h3>
-<ul class="simple">
-<li><p>串口波特率2400/4800/9600/19200/38400/57600/115200</p></li>
-<li><p>至少一个数字输出IO，切换频率≥ 1KHz</p></li>
-<li><p>至少一个数字输入IO，采样频率≥ 1KHz</p></li>
-</ul>
-</section>
-<section id="rtu-lib">
-<span id="id6"></span><h3><a class="toc-backref" href="#id18">libraries</a><a class="headerlink" href="#rtu-lib" title="Permalink to this heading">¶</a></h3>
-</section>
-<section id="rtu-if">
-<span id="id7"></span><h3><a class="toc-backref" href="#id19">interface</a><a class="headerlink" href="#rtu-if" title="Permalink to this heading">¶</a></h3>
-</section>
-<section id="rtu-hw">
-<span id="id8"></span><h3><a class="toc-backref" href="#id20">hardware</a><a class="headerlink" href="#rtu-hw" title="Permalink to this heading">¶</a></h3>
-<p>满足模型的基本功能需要4个IO，适配的MCU封装范围可选SON8到TSSOP20等一些列低成本 <a class="reference external" href="https://doc.soc.xin">L1控制器</a></p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>chips</p></th>
-<th class="head"><p>sdk</p></th>
-<th class="head"><p>cmsis</p></th>
-<th class="head"><p>rtos</p></th>
-<th class="head"><p>arduino</p></th>
-<th class="head"><p>libopencm3</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><a class="reference external" href="https://doc.soc.xin/STM32G031">STM32G031</a></p></td>
-<td><p>√</p></td>
-<td><p>√</p></td>
-<td><p>√</p></td>
-<td><p>√</p></td>
-<td><p>√</p></td>
-</tr>
-</tbody>
-</table>
+<span id="modbus-hw"></span><h3><a class="toc-backref" href="#id8">hardware</a><a class="headerlink" href="#hardware" title="Permalink to this heading">¶</a></h3>
 </section>
 </section>
 </section>
@@ -247,15 +174,15 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="templates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="mqtt.html" class="btn btn-neutral float-right" title="MQTT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rtu.html" class="btn btn-neutral float-left" title="RTU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../support/index.html" class="btn btn-neutral float-right" title="辅助设施" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
 
-    <p>&#169; Copyright 2022 - 2023 www.OS-Q.com.</p>
+    <p>&#169; Copyright 2022 - 2023 www.os-q.com.</p>
 <ins data-rvad-zoneid="8" data-rvad-id="f837d8c96893e793fdbb230cffb628fc"></ins>
 
   </div>
@@ -273,7 +200,7 @@
         <span class="icon-bar"></span>\
         <span class="icon-bar"></span>\
       </button>\
-      <a class="navbar-brand" href="https://www.OS-Q.com" title="OS-Q"></a>\
+      <a class="navbar-brand" href="https://www.os-q.com" title="OS-Q"></a>\
     </div>\
     <nav role="navigation" class="collapse navbar-collapse" id="navBarCollapse">\
       <div>\
@@ -324,9 +251,9 @@
           </li>\
         </ul>\
         <ul class="nav navbar-nav navbar-right">\
-          <li class="active"><a href="https://www.os-q.com/qio"><i class="fa fa-book fa-lg"></i>QIO</a></li>\
-          <li class="nav-soc-r"><a href="https://www.OS-Q.com/pio"><i class="fa fa-book fa-lg"></i>PIO</a></li>\
-          <li class="nav-soc-g"><a href="https://www.OS-Q.com"><i class="fa fa-quora fa-lg"></i>主页</a></li>\
+          <li class="active"><a href="https://www.os-q.com/qio"><i class="fa fa-book fa-lg"></i>qio</a></li>\
+          <li class="nav-soc-r"><a href="https://www.os-q.com/pio"><i class="fa fa-book fa-lg"></i>pio</a></li>\
+          <li class="nav-soc-g"><a href="https://www.os-q.com"><i class="fa fa-quora fa-lg"></i>主页</a></li>\
           <li class="nav-soc-b"><a href="https://github.com/OS-Q/qio"><i class="fa fa-github fa-lg"></i>仓库</a></li>\
         </ul>\
       </div>\
@@ -377,15 +304,15 @@
 
 <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
   <span class="rst-current-version" data-toggle="rst-current-version">
-    <span class="fa fa-book">QIO Documentation</span> v0.1.0
+    <span class="fa fa-book">qio documentation</span> v0.1.0
     <span class="fa fa-caret-down"></span>
   </span>
   <div class="rst-other-versions">
     <dl>
       <dt>OS-Q Created By Qtias</dt>
       <img src="./_static/images/weixin.jpg">
-        <!-- <dd><a href="https://github.com/OS-Q/docs/blob/qio/source/template/modbus.rst"> View</a></dd>
-        <dd><a href="https://github.com/OS-Q/docs/edit/qio/source/template/modbus.rst"> Edit</a></dd> -->
+        <!-- <dd><a href="https://github.com/OS-Q/docs/blob/qio/source/templates/modbus.rst"> View</a></dd>
+        <dd><a href="https://github.com/OS-Q/docs/edit/qio/source/templates/modbus.rst"> Edit</a></dd> -->
     </dl>
   </div>
 </div><script>

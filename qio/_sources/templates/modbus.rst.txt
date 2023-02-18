@@ -14,5 +14,3 @@ Modbus协议是一项应用层报文传输协议，包括ASCII、RTU、TCP三种
 
 
 .. include:: ../../../templates/modbus/readme.rst
-.. include:: ../../../templates/rtu/readme.rst
-
